@@ -1,22 +1,26 @@
-<header class="header">
-  <div class="container">
-    <svg width="28px" height="28px">
-      <use src="./images/icon/logo.svg"></use>
-    </svg>
-    <a href="">Filmoteka
-    </a>
-    <form action="">
-      <label>
-
-        <input type="text" name="query" autocomplete="off" placeholder="film" />
-      </label>
-
-      <button type="submit">
-        <svg width="12px" height="12px">
-          <use href=""></use>
+<header class="header header-shadow">
+  <div class="header-nav container">
+    <!--Навигация header-->
+    <nav class="main-nav">
+      <a class="logo link" href="./index.html"><svg class="logo__icon icon" width="24" height="24">
+          <use href="./images/icon/icons.svg#icon-film"></use>
         </svg>
-      </button>
-    </form>
-    <button type="button">Home</button>
-    <button type="button">my library</button>
+        <span class="title">Filmoteka</span></a>
+      <ul class="site__nav list">
+        <li class="site-nav__item">
+          <a id="home" class="site-nav__link link link__current" href="#">Home</a>
+        </li>
+        <li class="site-nav__item">
+          <a id="library" class="site-nav__link link" href="#">My Library</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="header-form">
+      <input type="text" class="form-input" name="film-search" id="search-input" placeholder="Search Movies">
+      <svg class="search__icon icon" width="12" height="12">
+        <use href="./images/icon/icons.svg#icon-search"></use>
+      </svg>
+      <p class="text-error hide" id="input-error">Search result not successful. Enter the correct movie name and </p>
+    </div>
+  </div>
 </header>
