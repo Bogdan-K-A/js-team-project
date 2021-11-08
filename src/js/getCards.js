@@ -9,6 +9,8 @@ async function getCard() {
 
     const data = await service.fetchFilms();
 
+    const genre = await service.fetchGenre();
+
     updateDate(data);
 
     updateGenres(data);
