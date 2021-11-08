@@ -17,25 +17,31 @@
   min-height: 230px;
 
   // 1X увеличение
-  background-image: url('../images/header/background/mobile/mobile-bg1x.jpg');
+  background-image: linear-gradient(to right, $header-gradient-color, $header-gradient-color),
+    url('../images/header/background/mobile/mobile-bg1x.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   @media screen and (min-width: $w-tablet) {
-    background-image: url('../images/header/background/tablet/tablet-bg1x.jpg');
+    background-image: linear-gradient(to right, $header-gradient-color, $header-gradient-color),
+      url('../images/header/background/tablet/tablet-bg1x.jpg');
   }
   @media screen and (min-width: $w-desctop) {
-    background-image: url('../images/header/background/desktop/desktop-bg1x.jpg');
+    background-image: linear-gradient(to right, $header-gradient-color, $header-gradient-color),
+      url('../images/header/background/desktop/desktop-bg1x.jpg');
   }
 
   // 2X увеличение
   @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-    background-image: url('../images/header/background/mobile/mobile-bg2x.jpg');
+    background-image: linear-gradient(to right, $header-gradient-color, $header-gradient-color),
+      url('../images/header/background/mobile/mobile-bg2x.jpg');
     @media screen and (min-width: $w-tablet) {
-      background-image: url('../images/header/background/tablet/tablet-bg2x.jpg');
+      background-image: linear-gradient(to right, $header-gradient-color, $header-gradient-color),
+        url('../images/header/background/tablet/tablet-bg2x.jpg');
     }
     @media screen and (min-width: $w-desctop) {
-      background-image: url('../images/header/background/desktop/desktop-bg2x.jpg');
+      background-image: linear-gradient(to right, $header-gradient-color, $header-gradient-color),
+        url('../images/header/background/desktop/desktop-bg2x.jpg');
     }
   }
 }
@@ -83,7 +89,7 @@
 }
 
 .title {
-  @media screen and(max-width: $w-tablet) {
+  @media screen and(max-width: 767px) {
     display: none;
   }
 }
