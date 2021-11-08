@@ -1,0 +1,61 @@
+.card-film {
+  flex-basis: calc(100% / 3 - 30px);
+  height: auto;
+  margin: 15px;
+}
+
+.card-film__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.card-film__title {
+  text-transform: uppercase;
+  font-family: $font-primary;
+  font-size: inherit;
+  font-weight: inherit;
+
+  line-height: 1.33;
+}
+
+.card-film__genre {
+  color: $third-color;
+  border-right: 1px solid $third-color;
+  padding-right: 4px;
+}
+
+.card-film__box-img {
+  display: flex;
+  height: 398px;
+  margin-bottom: 10px;
+}
+
+.card-film__inf {
+  display: flex;
+  align-items: center;
+}
+
+.year {
+  padding-left: 5px;
+  color: $third-color;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  padding-left: 10px;
+  padding-right: 9px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  line-height: 1.17;
+  text-transform: uppercase;
+  font-family: $font-primary;
+
+  background-color: $third-color;
+  color: white;
+  border-radius: 5px;
+}
