@@ -1,39 +1,46 @@
-
 export default class ApiService {
   constructor() {
     this.keyword = '';
-    this.page = 1;
-  }
-  async fetchFilms() {
-    const API_KEY = '62d44ab5445de8b2c3bd077293892901';
 
-    const URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&page=${this.page}`;
+    this.page = 1;
+
+    this.API_KEY = '62d44ab5445de8b2c3bd077293892901';
+  }
+
+  async fetchFilms() {
+    const URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${this.API_KEY}&page=${this.page}`;
 
     const responce = await fetch(URL);
 
     const result = await responce.json();
 
-    localStorage.setItem('films', JSON.stringify(result))
+    localStorage.setItem('films', JSON.stringify(result));
 
     this.increamentPage();
 
     return result;
   }
 
-  async fetchGenre(){
-    const API_KEY = '62d44ab5445de8b2c3bd077293892901';
-
-    const URL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`;
+  async fetchFilmsKeyWord() {
+    const URL = `https://api.themoviedb.org/3/search/movie?api_key=${this.API_KEY}&query=${this.keyword}&page=${this.page}`;
 
     const responce = await fetch(URL);
 
     const result = await responce.json();
-    
-    localStorage.setItem('genre', JSON.stringify(result))
 
+    console.log(result);
+  }
 
-    return result
+  async fetchGenre() {
+    const URL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${this.API_KEY}&language=en-US`;
 
+    const responce = await fetch(URL);
+
+    const result = await responce.json();
+
+    localStorage.setItem('genre', JSON.stringify(result));
+
+    return result;
   }
 
   resetPage() {
@@ -42,6 +49,10 @@ export default class ApiService {
 
   increamentPage() {
     this.page += 1;
+  }
+
+  decrementPage() {
+    this.page -= 1;
   }
 
   get query() {
