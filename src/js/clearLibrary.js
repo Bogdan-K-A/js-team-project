@@ -14,3 +14,4 @@ galleryLib.insertAdjacentHTML('beforeend', clearLibrary());
 backHome.addEventListener('click', refreshPage);
 }
 
+clearLib()
