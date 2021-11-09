@@ -93,4 +93,4 @@ function createPag(totalPage, page) {
   listPag.innerHTML = liTag;
 }
 
-createPag(totalPage, 1);
+createPag(totalPage, 5);
