@@ -3,10 +3,10 @@ import card from '../templates/card-film.hbs';
 
 const refs = { wrapperFilms: document.querySelector('.wrapper-films') };
 
+const service = new ApiService();
+
 async function getCard() {
   try {
-    const service = new ApiService();
-
     const data = await service.fetchFilms();
 
     const genre = await service.fetchGenre();

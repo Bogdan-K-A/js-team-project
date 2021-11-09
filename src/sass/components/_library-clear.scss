@@ -1,0 +1,56 @@
+.clear-library__title {
+  margin-bottom: 10px;
+  font-size: 50px;
+  color: $secondary-color;
+  text-align: center;
+}
+.clear-library__image {
+  width: 250px;
+  height: 200px;
+  margin: 0 auto;
+  background-image: url(../images/library/noMovie.jpg);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @media screen and (min-width: $w-tablet) {
+    width: 600px;
+    height: 400px;
+  }
+
+  @media screen and (min-width: $w-desctop) {
+    width: 800px;
+    height: 500px;
+  }
+}
+
+.clear-library_btn {
+  display: block;
+  min-width: 100px;
+  padding: 10px 30px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  font-weight: 700;
+  font-size: 24px;
+
+  letter-spacing: 0.06em;
+
+  border: 1px solid #ff6b01;
+  background-color: $third-color;
+  color: $front-color;
+  box-shadow: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  @media screen and (min-width: $w-tablet) {
+    min-width: 150px;
+  }
+  &:hover,
+  :focus {
+    background: #ff6b01;
+    box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.6));
+
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    cursor: pointer;
+  }
+}
