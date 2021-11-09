@@ -23,7 +23,7 @@ async function getCard() {
   }
 }
 
-function updateDate(data) {
+export function updateDate(data) {
   data.results.map(el => {
     el.release_date = el.release_date.substring(0, 4);
   });
@@ -31,7 +31,7 @@ function updateDate(data) {
   return data;
 }
 
-function updateRating(data) {
+export function updateRating(data) {
   data.results.map(el => {
     if (el.vote_average < 10) {
       el.vote_average = String(el.vote_average).padEnd(3, `.0`);
@@ -45,7 +45,7 @@ function updateRating(data) {
   return data;
 }
 
-function updateGenres(data) {
+export function updateGenres(data) {
   const arrayGenres = JSON.parse(localStorage.getItem('genre')).genres;
 
   let id = [];
