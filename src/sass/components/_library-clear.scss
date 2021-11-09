@@ -5,14 +5,20 @@
   text-align: center;
 }
 .clear-library__image {
+  width: 280px;
+  height: 200px;
   margin: 0 auto;
-  background-image: url(../images/library/theEnd.jpg);
+  background-image: url(../images/library/noMovie.jpg);
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
   @media screen and (min-width: $w-tablet) {
-    min-width: 600px;
-    min-height: 400px;
+    width: 600px;
+    height: 400px;
+  }
+  @media screen and (min-width: $w-desctop) {
+    width: 800px;
+    height: 500px;
   }
 }
 
