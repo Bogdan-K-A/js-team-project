@@ -9,7 +9,7 @@ const searchQuery = document.querySelector('.header-form');
 function addLibraryPage (e) {
   e.preventDefault();
   
-    const a = headerHome.insertAdjacentHTML('beforeend', myFilter());
+    headerHome.insertAdjacentHTML('beforeend', myFilter());
     
     headerHome.classList.add('header__library');
     pageHome.classList.remove('link__current');
