@@ -11,9 +11,10 @@ function createPag(totalPage, page) {
   /* ------------------------- добавляет стрелку влево ------------------------ */
   if (page > 1) {
     //если значение страницы больше 1, добавляем новый li, который является предыдущей кнопкой
+    // width="16" height="16
     liTag += `<li class="pagination-icon-left" onclick="createPag(totalPage, ${
       page - 1
-    })"><svg width="16" height="16">
+    })"><svg class="icon">
                     <use href="../images/icon/icons.svg#icon-arrow-left"></use>
                 </svg></li>`;
   }
