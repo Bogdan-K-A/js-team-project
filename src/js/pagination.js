@@ -4,7 +4,7 @@
 // import {wrapperFilms} from './library-container.js';//контеинер для списка фильмов
 
 const wrapper = document.querySelector('.wrapper');
-// const listPag = document.querySelector('.list-pagination');
+// const listPag = document.querySelector('.js-pagination');
 const pagination = document.querySelector('.js-pagination');
 
 let users = [
@@ -24,22 +24,21 @@ let users = [
 ];
 let notesOnPage = 2;
 
-// =======================
+/* ----------------------- пагинация ---------------------- */
 
-// рендер нумирации пагинатора
 let countOfItems = Math.ceil(users.length / notesOnPage);
 
 let items = [];
 for (let i = 1; i <= countOfItems; i++) {
   let li = document.createElement('li');
   li.classList = 'num';
-  // `<li class="num""><span>1</span></li>`;
+
   li.innerHTML = i;
   pagination.appendChild(li);
   items.push(li);
 }
-// ==============================
-// рабочая функция
+
+/* -------------------- показывает выбранную страницу ------------------- */
 const showPage = (function () {
   let activeLi;
   return function (item) {
@@ -51,38 +50,45 @@ const showPage = (function () {
     item.classList.add('active');
 
     let pageNum = +item.innerHTML;
-
     let start = (pageNum - 1) * notesOnPage;
     let end = start + notesOnPage;
-    // подобрать правильно ключь
-    let notes = users.slice(start, end);
-    // console.log(notes);
+    let notes = users.slice(start, end); // заменить API вместо users
 
-    // создаёт список Ul
-    // ====================
-    wrapper.innerHTML = ''; //очищает страницу
-    let ul = document.createElement('ul');
-    wrapper.appendChild(ul);
-    ul.classList = 'itemUl';
-    let listPag = document.querySelector('.itemUl');
-    // console.log(listPag);
-    // ====================
-    // добавляет li в Ul
-    for (const note of notes) {
-      let itemMovie = [];
-      // вложить шаблон для списка фильмов
-      // --------------------------
-      let li = document.createElement('li');
-      li.innerHTML = note.name;
-      listPag.appendChild(li);
-      itemMovie.push(li);
-      // --------------------------
-    }
+    clearPage();
+
+    createUl();
+
+    addsLiToUl(notes);
   };
 })();
-// =======================
-function addsLiToUl() {}
+
+/* ---------------------------- очищает страницу при переходе на следующюю ---------------------------- */
+function clearPage() {
+  wrapper.innerHTML = '';
+}
+
+/* ---------------------------- добавляет список ul--------------------------- */
+function createUl() {
+  let ul = document.createElement('ul');
+  wrapper.appendChild(ul);
+  ul.classList = 'movie-list';
+}
+
+/* ---------------------------- добавляет элементы li в список ul--------------------------- */
+function addsLiToUl(notes) {
+  let listPag = document.querySelector('.movie-list');
+  for (const note of notes) {
+    let itemMovie = [];
+
+    let li = document.createElement('li');
+    li.innerHTML = note.name; // вложить шаблон для списка фильмов
+    listPag.appendChild(li);
+    itemMovie.push(li);
+  }
+}
+
 showPage(items[0]);
+// -------------------------
 // присваивает слушатель событий к каждой цифре и автоматически ращитывает количество страниц
 for (const item of items) {
   item.addEventListener('click', function () {
@@ -91,7 +97,7 @@ for (const item of items) {
 }
 // ==============================
 /* ----------------------------- тут не работает ---------------------------- */
-// =====================================================================
+// ========================================================================================================================
 // function createPag(totalPage, page) {
 //   let liTag = '';
 //   let activeLi;

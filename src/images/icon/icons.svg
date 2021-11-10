@@ -23,11 +23,33 @@
         d="M0 16c0 8.837 7.163 16 16 16s16-7.163 16-16S24.837 0 16 0 0 7.163 0 16zm29 0c0 7.18-5.82 13-13 13S3 23.18 3 16 8.82 3 16 3s13 5.82 13 13z"
       /><path
         d="m22.086 20.914 2.829-2.829-8.914-8.914-8.914 8.914 2.828 2.828 6.086-6.086z"
-      /></symbol><symbol id="icon-arrow-left" viewBox="0 0 32 32"><path
-        d="M25.333 16h-18.667"
-      /><path d="M16 25.333l-9.333-9.333 9.333-9.333" />
-      </symbol><symbol id="icon-arrow-right" viewBox="0 0 32 32"><path d="M6.667 16h18.667" /><path
-        d="M16 25.333l9.333-9.333-9.333-9.333"
+      /></symbol><symbol id="icon-arrow-left" viewBox="0 0 32 32" fill="none"><path
+        d="M12.6666 8H3.33325"
+        stroke="black"
+        stroke-width="1.33333"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+<path
+        d="M7.99992 12.6667L3.33325 8.00004L7.99992 3.33337"
+        stroke="black"
+        stroke-width="1.33333"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      </symbol><symbol id="icon-arrow-right" viewBox="0 0 32 32" fill="none"><path
+        d="M3.33341 8H12.6667"
+        stroke="black"
+        stroke-width="1.33333"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+<path
+        d="M8.00008 12.6667L12.6667 8.00004L8.00008 3.33337"
+        stroke="black"
+        stroke-width="1.33333"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       />
       </symbol>
       </defs>
