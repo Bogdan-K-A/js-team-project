@@ -4,7 +4,6 @@
 // import {wrapperFilms} from './library-container.js';//контеинер для списка фильмов
 
 const wrapper = document.querySelector('.wrapper');
-// const listPag = document.querySelector('.js-pagination');
 const pagination = document.querySelector('.js-pagination');
 
 let users = [
@@ -22,52 +21,68 @@ let users = [
   { name: 'name10', age: 23 },
   { name: 'name11', age: 23 },
 ];
-let notesOnPage = 2;
+let numOfCardsPerPage = 2;
+let countOfItems = Math.ceil(users.length / numOfCardsPerPage); //округляет число карточек на странице
+let items = [];
 
 /* ----------------------- пагинация ---------------------- */
 
-let countOfItems = Math.ceil(users.length / notesOnPage);
-
-let items = [];
 for (let i = 1; i <= countOfItems; i++) {
   let li = document.createElement('li');
   li.classList = 'num';
 
   li.innerHTML = i;
+
   pagination.appendChild(li);
   items.push(li);
 }
 
-/* -------------------- показывает выбранную страницу ------------------- */
-const showPage = (function () {
-  let activeLi;
-  return function (item) {
-    if (activeLi) {
-      activeLi.classList.remove('active');
-    }
+/* --------------------- вызов функции текущей страницы --------------------- */
+showPage(items[0]);
 
-    activeLi = item;
-    item.classList.add('active');
+// присваивает слушатель событий к каждой цифре и автоматически ращитывает количество страниц
 
-    let pageNum = +item.innerHTML;
-    let start = (pageNum - 1) * notesOnPage;
-    let end = start + notesOnPage;
-    let notes = users.slice(start, end); // заменить API вместо users
+for (const item of items) {
+  item.addEventListener('click', function () {
+    showPage(item);
+  });
+}
+/* -------------------- показывает подсвечивает выбранную страницу ------------------- */
+function showPage(item) {
+  let pageNum = +item.innerHTML;
+  let start = (pageNum - 1) * numOfCardsPerPage;
+  let end = start + numOfCardsPerPage;
+  let notes = users.slice(start, end); // заменить API вместо users
 
-    clearPage();
+  removeCurrentColorPage();
 
-    createUl();
+  currentColorPage(item);
 
-    addsLiToUl(notes);
-  };
-})();
+  clearPage();
+
+  createUl();
+
+  addsLiToUl(notes);
+}
+
+/* --------------------  подсвечивает текущюю страницу ------------------- */
+function currentColorPage(item) {
+  item.classList.add('active');
+}
+/* ---------------------------- очищает текущий цвет страницы при переходе на следующюю ---------------------------- */
+function removeCurrentColorPage() {
+  let activeLi = document.querySelector('.active');
+  if (activeLi) {
+    activeLi.classList.remove('active');
+  }
+}
 
 /* ---------------------------- очищает страницу при переходе на следующюю ---------------------------- */
 function clearPage() {
   wrapper.innerHTML = '';
 }
 
-/* ---------------------------- добавляет список ul--------------------------- */
+/* ---------------------------- добавляет список на страницу ul--------------------------- */
 function createUl() {
   let ul = document.createElement('ul');
   wrapper.appendChild(ul);
@@ -87,14 +102,6 @@ function addsLiToUl(notes) {
   }
 }
 
-showPage(items[0]);
-// -------------------------
-// присваивает слушатель событий к каждой цифре и автоматически ращитывает количество страниц
-for (const item of items) {
-  item.addEventListener('click', function () {
-    showPage(this);
-  });
-}
 // ==============================
 /* ----------------------------- тут не работает ---------------------------- */
 // ========================================================================================================================
@@ -107,11 +114,11 @@ for (const item of items) {
 //   /* ------------------------- добавляет стрелку влево ------------------------ */
 //   if (page > 1) {
 //     //если значение страницы больше 1, добавляем новый li, который является предыдущей кнопкой
-//     // width="16" height="16
+//
 //     liTag += `<li class="pagination-icon-left" onclick="createPag(totalPage, ${
 //       page - 1
 //     })"><svg class="icon">
-//                     <use href="./images/icon/icons.svg#icons-arrow-left"></use>
+//                     <use href="./images/icon/icons.svg#icon-arrow-left"></use>
 //                 </svg></li>`;
 //   }
 

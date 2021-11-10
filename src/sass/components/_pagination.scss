@@ -7,8 +7,7 @@
 }
 
 .num,
-.pagination-icon-left,
-.pagination-icon-right {
+.pagination-arrow {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,15 +22,13 @@
   margin-right: 4px;
 }
 .num,
-.pagination-icon-left,
-.pagination-icon-right {
+.pagination-arrow {
   margin-right: 4px;
   cursor: pointer;
 }
 
 .num:hover,
-.pagination-icon-left:hover,
-.pagination-icon-right:hover {
+.pagination-arrow:hover {
   background: #ff6b08;
   color: white;
   stroke: white;
@@ -42,14 +39,12 @@
   color: white;
 }
 
-.pagination-icon-left,
-.pagination-icon-right {
+.pagination-arrow {
   background: #f7f7f7;
+  stroke: #000000;
 }
 
 .icon {
-  width: 50px;
-  height: 50px;
-  stroke: #000000;
-  fill: #000000;
+  width: 16px;
+  height: 16px;
 }
