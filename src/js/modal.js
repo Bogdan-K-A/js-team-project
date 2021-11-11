@@ -12,7 +12,7 @@ const fetchData = new API();
 
 galleryPosterSetModal.addEventListener('click', open);
 
-function open(e) {
+export function open(e) {
   // console.log(e.target);
   const cardId = e.target.parentNode.id;
   // console.log(e.target.parentNode.classList);
