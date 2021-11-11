@@ -16,18 +16,17 @@
         d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594C14.659 4.736 11.764 2 8.4 2 3.763 2 0 5.764 0 10.401c0 9.433 9.516 11.906 16.001 21.232C22.131 22.365 32 19.533 32 10.401 32 5.764 28.237 2 23.6 2z"
       /></symbol><symbol id="icon-close" viewBox="0 0 32 32"><path
         d="M16 0C7.163 0 0 7.163 0 16s7.163 16 16 16 16-7.163 16-16S24.837 0 16 0zm0 29C8.82 29 3 23.18 3 16S8.82 3 16 3s13 5.82 13 13-5.82 13-13 13z"
-      /><path
-        d="m21 8-5 5-5-5-3 3 5 5-5 5 3 3 5-5 5 5 3-3-5-5 5-5z"
-      /></symbol><symbol id="icon-circle-up" viewBox="0 0 32 32"><path
+      /><path d="m21 8-5 5-5-5-3 3 5 5-5 5 3 3 5-5 5 5 3-3-5-5 5-5z" /></symbol><symbol
+      id="icon-circle-up"
+      viewBox="0 0 32 32"
+    ><path
         d="M0 16c0 8.837 7.163 16 16 16s16-7.163 16-16S24.837 0 16 0 0 7.163 0 16zm29 0c0 7.18-5.82 13-13 13S3 23.18 3 16 8.82 3 16 3s13 5.82 13 13z"
       /><path
         d="m22.086 20.914 2.829-2.829-8.914-8.914-8.914 8.914 2.828 2.828 6.086-6.086z"
-      /></symbol><symbol id="icon-arrow-left" viewBox="0 0 32 32"><path 
-      d="M25.333 16h-18.667"></path><path d="M16 25.333l-9.333-9.333 9.333-9.333"
-      ></path>
-      </symbol><symbol id="icon-arrow-right" viewBox="0 0 32 32"><path 
-      d="M6.667 16h18.667"></path><path d="M16 25.333l9.333-9.333-9.333-9.333"
-      ></path>
+      /></symbol><symbol id="icon-arrow-left" fill="none"><path d="M12.6666 8H3.33325" />
+<path d="M7.99992 12.6667L3.33325 8.00004L7.99992 3.33337" />
+      </symbol><symbol id="icon-arrow-right" fill="none"><path d="M3.33341 8H12.6667" />
+<path d="M8.00008 12.6667L12.6667 8.00004L8.00008 3.33337" />
       </symbol>
       <symbol id="icon-close" viewBox="0 0 32 32">
       <path stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="2.1333" d="M8.533 8.533l14.933 14.933"></path>
