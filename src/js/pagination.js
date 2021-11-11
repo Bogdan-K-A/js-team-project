@@ -3,109 +3,109 @@
 // const service = new ApiService();
 // import {wrapperFilms} from './library-container.js';//контеинер для списка фильмов
 
-// const wrapper = document.querySelector('.wrapper');
-// const pagination = document.querySelector('.js-pagination');
+const wrapper = document.querySelector('.wrapper');
+const pagination = document.querySelector('.js-pagination');
 // const listPag = document.querySelector('.list-pagination');
 
 // /* --------------------------------- рабочий -------------------------------- */
 
-// let users = [
-//   // вложыть функцию высова списка фильмов
+let users = [
+  // вложыть функцию высова списка фильмов
 
-//   { name: 'name1', age: 23 },
-//   { name: 'name2', age: 23 },
-//   { name: 'name3', age: 23 },
-//   { name: 'name4', age: 23 },
-//   { name: 'name5', age: 23 },
-//   { name: 'name6', age: 23 },
-//   { name: 'name7', age: 23 },
-//   { name: 'name8', age: 23 },
-//   { name: 'name9', age: 23 },
-//   { name: 'name10', age: 23 },
-//   { name: 'name11', age: 23 },
-// ];
-// let numOfCardsPerPage = 2;
-// let countOfItems = Math.ceil(users.length / numOfCardsPerPage); //округляет число карточек на странице
-// let items = [];
-// /* ----------------------- пагинация ---------------------- */
+  { name: 'name1', age: 23 },
+  { name: 'name2', age: 23 },
+  { name: 'name3', age: 23 },
+  { name: 'name4', age: 23 },
+  { name: 'name5', age: 23 },
+  { name: 'name6', age: 23 },
+  { name: 'name7', age: 23 },
+  { name: 'name8', age: 23 },
+  { name: 'name9', age: 23 },
+  { name: 'name10', age: 23 },
+  { name: 'name11', age: 23 },
+];
+let numOfCardsPerPage = 2;
+let countOfItems = Math.ceil(users.length / numOfCardsPerPage); //округляет число карточек на странице
+let items = [];
+/* ----------------------- пагинация ---------------------- */
 
-// for (let i = 1; i <= countOfItems; i++) {
-//   let li = document.createElement('li');
-//   li.classList = 'num';
+for (let i = 1; i <= countOfItems; i++) {
+  let li = document.createElement('li');
+  li.classList = 'num';
 
-//   li.innerHTML = i;
+  li.innerHTML = i;
 
-//   // console.log(li);
+  // console.log(li);
 
-//   pagination.appendChild(li);
-//   items.push(li);
-// }
+  pagination.appendChild(li);
+  items.push(li);
+}
 
-// /* --------------------- вызов функции текущей страницы --------------------- */
-// showPage(items[0]);
+/* --------------------- вызов функции текущей страницы --------------------- */
+showPage(items[0]);
 
-// // присваивает слушатель событий к каждой цифре и автоматически ращитывает количество страниц
+// присваивает слушатель событий к каждой цифре и автоматически ращитывает количество страниц
 
-// for (const item of items) {
-//   item.addEventListener('click', function () {
-//     showPage(item);
-//     // console.log(item);
-//   });
-// }
-// /* -------------------- показывает подсвечивает выбранную страницу ------------------- */
-// function showPage(item) {
-//   let pageNum = +item.innerHTML;
-//   let start = (pageNum - 1) * numOfCardsPerPage;
-//   let end = start + numOfCardsPerPage;
-//   let notes = users.slice(start, end); // заменить API вместо users
+for (const item of items) {
+  item.addEventListener('click', function () {
+    showPage(item);
+    // console.log(item);
+  });
+}
+/* -------------------- показывает подсвечивает выбранную страницу ------------------- */
+function showPage(item) {
+  let pageNum = +item.innerHTML;
+  let start = (pageNum - 1) * numOfCardsPerPage;
+  let end = start + numOfCardsPerPage;
+  let notes = users.slice(start, end); // заменить API вместо users
 
-//   removeCurrentColorPage();
+  removeCurrentColorPage();
 
-//   currentColorPage(item);
+  currentColorPage(item);
 
-//   clearPage();
+  clearPage();
 
-//   createUl();
+  createUl();
 
-//   addsLiToUl(notes);
-// }
+  addsLiToUl(notes);
+}
 
-// /* --------------------  подсвечивает текущюю страницу ------------------- */
-// function currentColorPage(item) {
-//   item.classList.add('active');
-// }
-// /* ---------------------------- очищает текущий цвет страницы при переходе на следующюю ---------------------------- */
-// function removeCurrentColorPage() {
-//   let activeLi = document.querySelector('.active');
-//   if (activeLi) {
-//     activeLi.classList.remove('active');
-//   }
-// }
+/* --------------------  подсвечивает текущюю страницу ------------------- */
+function currentColorPage(item) {
+  item.classList.add('active');
+}
+/* ---------------------------- очищает текущий цвет страницы при переходе на следующюю ---------------------------- */
+function removeCurrentColorPage() {
+  let activeLi = document.querySelector('.active');
+  if (activeLi) {
+    activeLi.classList.remove('active');
+  }
+}
 
-// /* ---------------------------- очищает страницу при переходе на следующюю ---------------------------- */
-// function clearPage() {
-//   wrapper.innerHTML = '';
-// }
+/* ---------------------------- очищает страницу при переходе на следующюю ---------------------------- */
+function clearPage() {
+  wrapper.innerHTML = '';
+}
 
-// /* ---------------------------- добавляет список на страницу ul--------------------------- */
-// function createUl() {
-//   let ul = document.createElement('ul');
-//   wrapper.appendChild(ul);
-//   ul.classList = 'movie-list';
-// }
+/* ---------------------------- добавляет список на страницу ul--------------------------- */
+function createUl() {
+  let ul = document.createElement('ul');
+  wrapper.appendChild(ul);
+  ul.classList = 'movie-list';
+}
 
-// /* ---------------------------- добавляет элементы li в список ul--------------------------- */
-// function addsLiToUl(notes) {
-//   let listPag = document.querySelector('.movie-list');
-//   for (const note of notes) {
-//     let itemMovie = [];
+/* ---------------------------- добавляет элементы li в список ul--------------------------- */
+function addsLiToUl(notes) {
+  let listPag = document.querySelector('.movie-list');
+  for (const note of notes) {
+    let itemMovie = [];
 
-//     let li = document.createElement('li');
-//     li.innerHTML = note.name; // вложить шаблон для списка фильмов
-//     listPag.appendChild(li);
-//     itemMovie.push(li);
-//   }
-// }
+    let li = document.createElement('li');
+    li.innerHTML = note.name; // вложить шаблон для списка фильмов
+    listPag.appendChild(li);
+    itemMovie.push(li);
+  }
+}
 
 // =================================================================================================================================
 /* ----------------------------- тут не работает  пагинатор---------------------------- */
