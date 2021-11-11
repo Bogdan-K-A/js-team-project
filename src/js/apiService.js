@@ -62,4 +62,14 @@ export default class ApiService {
   set query(newKeyword) {
     this.keyword = newKeyword;
   }
+  async getDescriptionMovie(id) {
+    const queryData = `https://api.themoviedb.org/3/movie/${id}?api_key=${this.API_KEY}&language=en-US`;
+    try {
+      const result = await fetch(`${queryData}`);
+      const response = result.json();
+      return response;
+    } catch (err) {
+      console.log('error');
+    }
+  }
 }

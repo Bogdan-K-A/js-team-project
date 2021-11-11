@@ -10,3 +10,4 @@ import './js/clearLibrary';
 import './js/clearLibrary';
 import linkMyLibrary from './js/linkMyLibrary';
 import btnWatchedQueue from './js/btnWatched-Queue';
+import './js/modal';
