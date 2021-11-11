@@ -3,6 +3,7 @@ const galleryPosterSetModal = document.querySelector('.wrapper-films');
 const closeBtn = document.querySelector('.modal__button_close');
 const modalBackdrop = document.querySelector('.modal_backdrop');
 const galleryBox = document.querySelector('.modal-markup');
+import { addToLocalStorWatched,addToLocalStorQueue,renderBtnWatch,renderBtnQueue } from './addToLocalStorLibrary.js';
 import { onCutDate, onToggleGenresData } from './components/newData';
 import modalMarkup from '../templates/modal.hbs';
 import API from './apiService';
@@ -19,7 +20,7 @@ export function open(e) {
     return;
   }
   modalBackdrop.classList.remove('is-hidden');
-  renderModal(cardId);
+  renderModal(cardId)
   closeModal();
 }
 function closeModal() {
@@ -39,18 +40,28 @@ function closeModal() {
 function close() {
   modalBackdrop.classList.add('is-hidden');
   galleryBox.innerHTML = '';
+  // Видаляє обєкт з фільмом на LocalStorage
+  localStorage.removeItem('currentFilm');
 }
 
 async function renderModal(cardId) {
   try {
     const data = await fetchData.getDescriptionMovie(cardId);
-    onCutDate(data);
+    // onCutDate(data);
     onToggleGenresData(data, genresData);
-    console.log(data);
+    // console.log(data);
+    // Добавляє обєкт з фільмом на LocalStorage
+    localStorage.setItem('currentFilm',JSON.stringify(data))
     const markup = modalMarkup(data);
     // console.log(markup);
     galleryBox.insertAdjacentHTML('beforeend', markup);
+    renderBtnWatch()
+    renderBtnQueue()
+    addToLocalStorQueue()
+    addToLocalStorWatched()
   } catch (err) {
     console.log('error');
   }
 }
+
+
