@@ -5,7 +5,7 @@
 
 const wrapper = document.querySelector('.wrapper');
 const pagination = document.querySelector('.js-pagination');
-// const listPag = document.querySelector('.list-pagination');
+const listPag = document.querySelector('.list-pagination');
 
 /* --------------------------------- рабочий -------------------------------- */
 
@@ -58,9 +58,6 @@ function showPage(item) {
   let start = (pageNum - 1) * numOfCardsPerPage;
   let end = start + numOfCardsPerPage;
   let notes = users.slice(start, end); // заменить API вместо users
-  // -------------------------------------------------
-
-  // -------------------------------------------------
 
   removeCurrentColorPage();
 
