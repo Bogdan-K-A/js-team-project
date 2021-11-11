@@ -6,11 +6,14 @@ function refreshPage() {
   document.location.reload();
 }
 
-function clearLib() {
+export function clearLib() {
   galleryLib.innerHTML = '';
   galleryLib.insertAdjacentHTML('beforeend', clearLibrary());
-
-  backHome.addEventListener('click', refreshPage);
+  setTimeout(() => {
+  const backHome = document.querySelector('.clear-library_btn');
+   backHome.addEventListener('click', refreshPage);
+}, 1000);
 }
 
+ 
 // clearLib()
