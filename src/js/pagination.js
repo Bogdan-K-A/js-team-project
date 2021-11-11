@@ -21,13 +21,21 @@ let users = [
   { name: 'name10', age: 23 },
   { name: 'name11', age: 23 },
 ];
-let numOfCardsPerPage = 2;
+let numOfCardsPerPage = 5;
 let countOfItems = Math.ceil(users.length / numOfCardsPerPage); //округляет число карточек на странице
 let items = [];
 
 /* ----------------------- пагинация ---------------------- */
 
 for (let i = 1; i <= countOfItems; i++) {
+  if (i > countOfItems) {
+    continue;
+  }
+  if (i === 0) {
+    //если pageLangs равно 0, добавляем +1 к значению pageLangth
+    i = i + 1;
+  }
+
   let li = document.createElement('li');
   li.classList = 'num';
 
