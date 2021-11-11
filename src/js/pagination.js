@@ -5,6 +5,7 @@
 
 const wrapper = document.querySelector('.wrapper');
 const pagination = document.querySelector('.js-pagination');
+// const listPag = document.querySelector('.list-pagination');
 
 let users = [
   // вложыть функцию высова списка фильмов
@@ -21,25 +22,17 @@ let users = [
   { name: 'name10', age: 23 },
   { name: 'name11', age: 23 },
 ];
-let numOfCardsPerPage = 5;
+let numOfCardsPerPage = 2;
 let countOfItems = Math.ceil(users.length / numOfCardsPerPage); //округляет число карточек на странице
 let items = [];
-
 /* ----------------------- пагинация ---------------------- */
-
-for (let i = 1; i <= countOfItems; i++) {
-  if (i > countOfItems) {
-    continue;
-  }
-  if (i === 0) {
-    //если pageLangs равно 0, добавляем +1 к значению pageLangth
-    i = i + 1;
-  }
-
+let beforePage = pageNum - 1;
+let afterPage = pageNum + 1;
+for (let i = beforePage; i <= afterPage; i++) {
   let li = document.createElement('li');
   li.classList = 'num';
-
   li.innerHTML = i;
+  console.log(li);
 
   pagination.appendChild(li);
   items.push(li);
@@ -53,6 +46,7 @@ showPage(items[0]);
 for (const item of items) {
   item.addEventListener('click', function () {
     showPage(item);
+    console.log(item);
   });
 }
 /* -------------------- показывает подсвечивает выбранную страницу ------------------- */
@@ -61,6 +55,15 @@ function showPage(item) {
   let start = (pageNum - 1) * numOfCardsPerPage;
   let end = start + numOfCardsPerPage;
   let notes = users.slice(start, end); // заменить API вместо users
+
+  // -----------------------------------------------
+  // let beforePage = pageNum - 1;
+  // let afterPage = pageNum + 1;
+  // console.log(beforePage);
+  // if (pageNum > 1) {
+  //   li.innerText = `<li class="dots"><span>. . .</span></li>`;
+  // }
+  // -----------------------------------------------
 
   removeCurrentColorPage();
 
@@ -110,9 +113,10 @@ function addsLiToUl(notes) {
   }
 }
 
-// ==============================
-/* ----------------------------- тут не работает ---------------------------- */
-// ========================================================================================================================
+// // ========================================================================================================================
+/* ----------------------------- тут не работает  пагинатор---------------------------- */
+// // ========================================================================================================================
+// let totalPage = 20;
 // function createPag(totalPage, page) {
 //   let liTag = '';
 //   let activeLi;
@@ -122,8 +126,8 @@ function addsLiToUl(notes) {
 //   /* ------------------------- добавляет стрелку влево ------------------------ */
 //   if (page > 1) {
 //     //если значение страницы больше 1, добавляем новый li, который является предыдущей кнопкой
-//
-//     liTag += `<li class="pagination-icon-left" onclick="createPag(totalPage, ${
+
+//     liTag += `<li class="pagination-arrow" onclick=createPag(totalPage, ${
 //       page - 1
 //     })"><svg class="icon">
 //                     <use href="./images/icon/icons.svg#icon-arrow-left"></use>
@@ -196,7 +200,8 @@ function addsLiToUl(notes) {
 //   /* ------------------------ добавляет стрелку вправо ------------------------ */
 //   if (page < totalPage) {
 //     //если значение страницы меньше общего значения страницы тогда, добавьте новый li, который является следующей кнопкой
-//     liTag += `<li class="pagination-icon-right" onclick="createPag(totalPage, ${
+
+//     liTag += `<li class="pagination-arrow" onclick="createPag(totalPage, ${
 //       page + 1
 //     })"><svg class="icon">
 //                     <use href="./images/icon/icons.svg#icon-arrow-right"></use>
