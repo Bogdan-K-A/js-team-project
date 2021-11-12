@@ -1,5 +1,6 @@
 import clearLibrary from '../templates/clear-library.hbs';
-const galleryLib = document.querySelector('.content');
+const galleryLib = document.querySelector('.content'); //-
+const wrapperFilms = document.querySelector('.wrapper-films');//+
 const backHome = document.querySelector('.clear-library_btn');
 
 function refreshPage() {
@@ -7,12 +8,13 @@ function refreshPage() {
 }
 
 export function clearLib() {
-  galleryLib.innerHTML = '';
-  galleryLib.insertAdjacentHTML('beforeend', clearLibrary());
-  setTimeout(() => {
-  const backHome = document.querySelector('.clear-library_btn');
-   backHome.addEventListener('click', refreshPage);
-}, 1000);
+  // galleryLib.innerHTML = ''; //-
+  // galleryLib.insertAdjacentHTML('beforeend', clearLibrary()); //-
+  wrapperFilms.insertAdjacentHTML('beforeend', clearLibrary());
+//   setTimeout(() => {
+//   const backHome = document.querySelector('.clear-library_btn');
+//    backHome.addEventListener('click', refreshPage);
+// }, 1000); //*?
 }
 
  
