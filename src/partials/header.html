@@ -17,11 +17,13 @@
       </ul>
     </nav>
     <div class="header-form">
-      <input type="text" class="form-input" name="film-search" id="search-input" placeholder="Search Movies">
-      <svg class="search__icon icon" width="12" height="12">
-        <use href="./images/icon/icons.svg#icon-search"></use>
-      </svg>
-      <p class="text-error hide" id="input-error">Search result not successful. Enter the correct movie name and </p>
+      <form class="header__input">
+        <input type="text" name="input" class="form-input" placeholder="Search movies" />
+        <svg class="search__icon icon" width="12" height="12">
+          <use href="./images/icon/icons.svg#icon-search"></use>
+        </svg>
+      </form>
+      <div class="text-error"></div>
     </div>
   </div>
 </header>
