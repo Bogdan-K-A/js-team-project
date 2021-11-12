@@ -21,24 +21,24 @@ function createPag(totalPage, page) {
   /* ------------------------- добавляет стрелку влево ------------------------ */
   if (page > 1) {
     //если значение страницы больше 1, добавляем новый li, который является предыдущей кнопкой
-    liTag += `<li class="pagination-arrow" data-index="${page - 1}"><svg class="icon">
-                    <use href="./images/icon/icons.svg#icon-arrow-left"></use>
-                </svg></li>`;
+    // liTag += `<li class="pagination-arrow" data-index="${page - 1}"><svg class="icon">
+    //                 <use href="./images/icon/icons.svg#icon-arrow-left"></use>
+    //             </svg></li>`;
     getCard();
 
     // ----------------------------------------
-    //     liTag += `<li class="pagination-arrow" data-index="${
-    //       page - 1
-    //     }"><svg class="icon" fill="none" xmlns="http://www.w3.org/2000/svg">
-    // <path
-    //     d="M12.6666 8H3.33325"
+    liTag += `<li class="pagination-arrow" data-index="${
+      page - 1
+    }"><svg class="pag-icon" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+        d="M12.6666 8H3.33325"
 
-    //   />
-    // <path
-    //     d="M7.99992 12.6667L3.33325 8.00004L7.99992 3.33337"
+      />
+    <path
+        d="M7.99992 12.6667L3.33325 8.00004L7.99992 3.33337"
 
-    //   />
-    // </svg></li>`;
+      />
+    </svg></li>`;
     // ----------------------------------------
   }
 
@@ -111,17 +111,17 @@ function createPag(totalPage, page) {
   /* ------------------------ добавляет стрелку вправо ------------------------ */
   if (page < totalPage) {
     //если значение страницы меньше общего значения страницы тогда, добавьте новый li, который является следующей кнопкой
-    liTag += `<li class="pagination-arrow"  data-index="${page + 1}" ><svg class="icon">
-                    <use href="./images/icon/arrow-r.svg"></use>
-                </svg></li>`;
+    // liTag += `<li class="pagination-arrow"  data-index="${page + 1}" ><svg class="icon">
+    //                 <use href="./images/icon/arrow-r.svg"></use>
+    //             </svg></li>`;
 
     // ---------------------------------
-    //     liTag += `<li class="pagination-arrow"  data-index="${
-    //       page + 1
-    //     }"><svg class="icon" fill="none" xmlns="http://www.w3.org/2000/svg">
-    // <path d="M3.33341 8H12.6667"/>
-    // <path d="M8.00008 12.6667L12.6667 8.00004L8.00008 3.33337" />
-    // </svg></li>`;
+    liTag += `<li class="pagination-arrow"  data-index="${
+      page + 1
+    }"><svg class="pag-icon" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3.33341 8H12.6667"/>
+    <path d="M8.00008 12.6667L12.6667 8.00004L8.00008 3.33337" />
+    </svg></li>`;
     // ---------------------------------
   }
   pagination.innerHTML = liTag;
