@@ -1,3 +1,7 @@
+.clear-library {
+  text-align: center;
+}
+
 .clear-library__title {
   margin-bottom: 10px;
   font-size: 50px;
@@ -24,16 +28,11 @@
 }
 
 .clear-library_btn {
-  display: block;
-  min-width: 100px;
+  display: inline-block;
   padding: 10px 30px;
-  margin: auto;
   margin-top: 20px;
-  margin-bottom: 20px;
-
   font-weight: 700;
   font-size: 24px;
-
   letter-spacing: 0.06em;
 
   border: 1px solid #ff6b01;

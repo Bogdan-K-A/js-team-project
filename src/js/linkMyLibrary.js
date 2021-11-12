@@ -1,6 +1,6 @@
 import renderTamplLibrary from './library-container.js';
 const refs = { wrapperFilms: document.querySelector('.wrapper-films') };
-
+import { clearLib } from './clearLibrary';
 import { onBtnWatchedClick, onBtnQueueClick } from './btnWatched-Queue.js';
 
 // Local Storage
@@ -64,7 +64,7 @@ function onClickLibrary() {
     })
     }
     if (r.length == 0) {
-        let markup = `<p>Your library is empty </p>`
+      let markup = clearLib();
         return refs.wrapperFilms.insertAdjacentHTML('beforeend', markup)
     }
     // console.log(r)

@@ -85,4 +85,14 @@ export default class ApiService {
       console.log('error');
     }
   }
+  async getFetchTrailerSearch(id) {
+    const url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${this.API_KEY}&language=en-US`;
+    try {
+      const result = await fetch(`${url}`)
+      const response = result.json();
+      return response;
+    } catch (err) {
+      console.log('error');
+    }
+  }
 }
