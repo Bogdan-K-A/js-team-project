@@ -49,4 +49,4 @@ module.exports={genres:[{id:28,name:"Action"},{id:12,name:"Adventure"},{id:16,na
 },{"./apiService":"eQwa","../templates/trailer.hbs":"D1LG","./modal":"RSqK"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");var r=u(require("./js/apiService")),e=u(require("./js/getCards")),i=u(require("./js/header-library"));require("./js/pagination"),require("./js/clearLibrary");var s=u(require("./js/linkMyLibrary")),a=u(require("./js/btnWatched-Queue"));function u(r){return r&&r.__esModule?r:{default:r}}require("./js/modal"),require("./js/search"),require("./js/addToLocalStorLibrary.js"),require("./js/modalTrailer");
 },{"./sass/main.scss":"clu1","./js/apiService":"eQwa","./js/getCards":"NpGb","./js/header-library":"XgnG","./js/pagination":"o8lo","./js/clearLibrary":"aqgU","./js/linkMyLibrary":"EFc7","./js/btnWatched-Queue":"LENP","./js/modal":"RSqK","./js/search":"HU2o","./js/addToLocalStorLibrary.js":"RQWD","./js/modalTrailer":"Wviz"}]},{},["Focm"], null)
-//# sourceMappingURL=/js-team-project/src.89679a41.js.map
+//# sourceMappingURL=/js-team-project/src.f3c122d3.js.map
