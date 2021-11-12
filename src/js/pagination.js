@@ -17,7 +17,6 @@ function createPag(totalPage, page) {
   let activeLi;
   let beforePage = page - 1; // 20 - 1 = 19
   let afterPage = page + 1; // 20 + 1 = 21
-  // getCard();
   clearPage();
   /* ------------------------- добавляет стрелку влево ------------------------ */
   if (page > 1) {
@@ -25,7 +24,6 @@ function createPag(totalPage, page) {
     // liTag += `<li class="pagination-arrow" data-index="${page - 1}"><svg class="icon">
     //                 <use href="./images/icon/icons.svg#icon-arrow-left"></use>
     //             </svg></li>`;
-    getCard();
     liTag += `<li class="pagination-arrow" data-index="${
       page - 1
     }"><svg class="icon" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -89,7 +87,6 @@ function createPag(totalPage, page) {
     } else {
       // в противном случае оставляем пустую строку в переменной activeLi
       activeLi = '';
-      clearPage();
     }
 
     liTag += `<li class="num ${activeLi}" data-index="${pageLength}">${pageLength}</li>`;
@@ -128,6 +125,7 @@ function switchesPages(e) {
   if (e.target.tagName !== 'LI') return;
   // console.log(e.target.dataset.index);
   createPag(totalPage, +e.target.dataset.index);
+  getCard();
 }
 // /* ---------------------------- очищает страницу при переходе на следующюю ---------------------------- */
 function clearPage() {
