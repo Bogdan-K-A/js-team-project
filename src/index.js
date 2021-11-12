@@ -17,3 +17,5 @@ import './js/search';
 import './js/addToLocalStorLibrary.js';
 
 import './js/modalTrailer';
+
+import './js/components/button-scroll.js';
