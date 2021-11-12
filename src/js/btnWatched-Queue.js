@@ -1,5 +1,5 @@
 import { load } from './linkMyLibrary.js' //Local Storage
-import { updateDate, updateRating, updateGenres } from './getCards';
+import { updateLDate, updateLRating, updateLGenres } from './linkMyLibrary';
 
 import renderTamplLibrary from './library-container.js';
 const refs = {
@@ -7,7 +7,7 @@ const refs = {
 };
 
 export function onBtnWatchedClick() {
-    clearMainContainer();
+    // clearMainContainer(); //*
     const btnWatched = document.querySelector('.js-btn-watched');
     const btnQueue = document.querySelector('.js-btn-queue');
     btnWatched.classList.add("isActive");
@@ -15,44 +15,50 @@ export function onBtnWatchedClick() {
 
     let filmWatched = load('watched');
     
-    if (filmWatched !== undefined) {
-        updateDate(filmWatched);
-        updateGenres(filmWatched);
-        updateRating(filmWatched);
+    if (filmWatched.length !== 0) {
+        clearMainContainer();//*
+        updateLDate(filmWatched);
+        updateLGenres(filmWatched);
+        updateLRating(filmWatched);
         
-        renderTamplLibrary(filmWatched.results);
+        renderTamplLibrary(filmWatched);
     }
-    else {
-        let markup = `<p>No movies watched</p>`
-        return refs.wrapperFilms.insertAdjacentHTML('beforeend', markup)
-    }
+    // else {
+    //     console.log('No movies watched')
+    //     let markup = `<p>No movies watched</p>`
+    //     return refs.wrapperFilms.insertAdjacentHTML('beforeend', markup)
+    //     return clearLib()
+    // }
     
 }
 
 export function onBtnQueueClick() {
-    clearMainContainer();
+    // clearMainContainer();
     const btnWatched = document.querySelector('.js-btn-watched');
     const btnQueue = document.querySelector('.js-btn-queue');
     btnWatched.classList.remove("isActive");
     btnQueue.classList.add("isActive");
     let filmQueue = load('queue');
     
-    if (filmQueue !== undefined) {
-        updateDate(filmQueue);
-        updateGenres(filmQueue);
-        updateRating(filmQueue);
+    if (filmQueue.length !== 0) {
+        clearMainContainer();//*
+        updateLDate(filmQueue);
+        updateLGenres(filmQueue);
+        updateLRating(filmQueue);
         
-        renderTamplLibrary(filmQueue.results);
+        renderTamplLibrary(filmQueue);
     }
-    else {
-        let markup = `<p>No movies added</p>`
-        return refs.wrapperFilms.insertAdjacentHTML('beforeend', markup)
-    }
+    // else {
+    //     console.log('No movies que')
+    //     let markup = `<p>No movies added</p>`
+    //     return refs.wrapperFilms.insertAdjacentHTML('beforeend', markup)
+    // }
     
 }
 
 function clearMainContainer() {
   refs.wrapperFilms.innerHTML = '';
 }
+
 
 

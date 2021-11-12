@@ -17,7 +17,11 @@
   }
 
   height: auto;
+  // transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+// .card-film:hover {
+//   transform: scale(1.03);
+// }
 
 .card-film__img {
   display: block;

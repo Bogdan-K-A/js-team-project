@@ -2,13 +2,13 @@
     {{#each this}}
     <li class='card-film'>
         <div class='card-film__box-img'>
-            <img src='https://image.tmdb.org/t/p/w500{{poster_path}}' alt='' class='card-film__img' />
+            <img src='https://image.tmdb.org/t/p/w500{{poster_path}}' alt={{title}} class='card-film__img' />
         </div>
         <div class='card-film__description'>
             <h2 class='card-film__title'>{{title}}</h2>
             <div class='card-film__inf'>
-                {{#if genre_ids}}
-                <p class='card-film__genre'>{{genre_ids}}</p>
+                {{#if genres}}
+                <p class='card-film__genre'>{{genres}}</p>
                 {{/if}}
                 {{#if release_date}}
                 <span class='year'>{{release_date}}</span>

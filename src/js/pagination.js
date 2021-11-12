@@ -8,8 +8,8 @@ const pagination = document.querySelector('.js-pagination');
 // const wrapper = document.querySelector('.wrapper');
 // const listPag = document.querySelector('.list-pagination');
 
-/* ------------------------ РАБОЧИЙ!!!!!!!!!!!!!!!!!! V1----------------------- */
 
+/* ------------------------ РАБОЧИЙ!!!!!!!!!!!!!!!!!! V1----------------------- */
 let totalPage = 20;
 
 function createPag(totalPage, page) {
