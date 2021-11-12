@@ -5,7 +5,7 @@ const refs = { wrapperFilms: document.querySelector('.wrapper-films') };
 
 const service = new ApiService();
 
-async function getCard() {
+export async function getCard() {
   try {
     const data = await service.fetchFilms();
 

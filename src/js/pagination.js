@@ -1,11 +1,12 @@
-// import libraryFilmCard from '../templates/library-film-render.hbs';
-// import ApiService from './apiService.js';
-// const service = new ApiService();
-// import {wrapperFilms} from './library-container.js';//контеинер для списка фильмов
+// import card from '../templates/card-film.hbs';
+import { getCard } from './getCards.js';
+import ApiService from './apiService.js';
+const service = new ApiService();
 
-const wrapper = document.querySelector('.wrapper');
+const refs = { wrapperFilms: document.querySelector('.wrapper-films') };
+// const wrapper = document.querySelector('.wrapper');
 const pagination = document.querySelector('.js-pagination');
-const listPag = document.querySelector('.list-pagination');
+// const listPag = document.querySelector('.list-pagination');
 
 /* --------------------------------- рабочий -------------------------------- */
 
@@ -49,6 +50,9 @@ showPage(items[0]);
 for (const item of items) {
   item.addEventListener('click', function () {
     showPage(item);
+    service.increamentPage();
+    // console.log(service);
+    getCard();
     // console.log(item);
   });
 }
@@ -57,6 +61,7 @@ function showPage(item) {
   let pageNum = +item.innerHTML;
   let start = (pageNum - 1) * numOfCardsPerPage;
   let end = start + numOfCardsPerPage;
+  // let notes = users.slice(start, end); // заменить API вместо users
   let notes = users.slice(start, end); // заменить API вместо users
 
   removeCurrentColorPage();
@@ -84,13 +89,15 @@ function removeCurrentColorPage() {
 
 /* ---------------------------- очищает страницу при переходе на следующюю ---------------------------- */
 function clearPage() {
-  wrapper.innerHTML = '';
+  // wrapper.innerHTML = '';
+  refs.wrapperFilms.innerHTML = '';
 }
 
 /* ---------------------------- добавляет список на страницу ul--------------------------- */
 function createUl() {
   let ul = document.createElement('ul');
-  wrapper.appendChild(ul);
+  // wrapper.appendChild(ul);
+  refs.wrapperFilms.appendChild(ul);
   ul.classList = 'movie-list';
 }
 
@@ -101,7 +108,7 @@ function addsLiToUl(notes) {
     let itemMovie = [];
 
     let li = document.createElement('li');
-    li.innerHTML = note.name; // вложить шаблон для списка фильмов
+    // li.innerHTML = note.name; // вложить шаблон для списка фильмов
     listPag.appendChild(li);
     itemMovie.push(li);
   }
