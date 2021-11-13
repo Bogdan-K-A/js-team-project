@@ -119,7 +119,7 @@ function createPag(totalPage, page) {
   pagination.innerHTML = liTag;
 }
 // /* ----------------------------рендерит пагинатор на страницу, createPag(общее кол страниц, начало призагрузке)---------------------------- */
-createPag(totalPage, 1);
+createPag(totalPage, 5);
 /* -------------------------- переключатель страниц ------------------------- */
 function switchesPages(e) {
   if (e.target.tagName !== 'LI') return;
