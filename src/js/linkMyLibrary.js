@@ -1,5 +1,4 @@
 import renderTamplLibrary from './library-container.js';
-import clearLibrary from '../templates/clear-library.hbs'; //+
 const refs = { wrapperFilms: document.querySelector('.wrapper-films') };
 import { clearLib } from './clearLibrary'; //*
 import { onBtnWatchedClick, onBtnQueueClick } from './btnWatched-Queue.js';
@@ -15,28 +14,16 @@ export const load = key => {
   }
 };
 
-// const save = (key, value) => {  //-
-//   try {
-//     const info = JSON.stringify(value);
-//     localStorage.setItem(key, info);
-//   } catch (err) {
-//     console.error('Set state error: ', err);
-//   }
-// };
-
 // Сlick on link "My Library"
-const linkLibrary = document.querySelector('#library');
-linkLibrary.addEventListener('click', onClickLibrary);
 
-function onClickLibrary() {
-    clearMainContainer();
+export function getLibrary() {
+  clearMainContainer();
     
     const btnWatched = document.querySelector('.js-btn-watched');
     const btnQueue = document.querySelector('.js-btn-queue');
     
     btnWatched.addEventListener('click', onBtnWatchedClick);
     btnQueue.addEventListener('click', onBtnQueueClick);
-    
     
     let filmWatched = load('watched');
     
@@ -55,10 +42,8 @@ function onClickLibrary() {
     })
     }
   if (r.length == 0) {
-      // console.log('empty')
-      // let markup = clearLib(); //-
-      // return refs.wrapperFilms.insertAdjacentHTML('beforeend', markup) //*
-    return clearLib()
+    const textLibrary = { text: 'No Movies' };
+    return clearLib(textLibrary)
     }
     
     updateLDate(r);
@@ -68,6 +53,7 @@ function onClickLibrary() {
     updateLRating(r);
 
     renderTamplLibrary(r);
+  
 }
 
 function clearMainContainer() {

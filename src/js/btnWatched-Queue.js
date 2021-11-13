@@ -6,8 +6,10 @@ const refs = {
     wrapperFilms: document.querySelector('.wrapper-films')
 };
 
+import { clearLib } from './clearLibrary'; 
+
 export function onBtnWatchedClick() {
-    // clearMainContainer(); //*
+    clearMainContainer(); 
     const btnWatched = document.querySelector('.js-btn-watched');
     const btnQueue = document.querySelector('.js-btn-queue');
     btnWatched.classList.add("isActive");
@@ -16,24 +18,22 @@ export function onBtnWatchedClick() {
     let filmWatched = load('watched');
     
     if (filmWatched.length !== 0) {
-        clearMainContainer();//*
         updateLDate(filmWatched);
         updateLGenres(filmWatched);
         updateLRating(filmWatched);
         
         renderTamplLibrary(filmWatched);
     }
-    // else {
-    //     console.log('No movies watched')
-    //     let markup = `<p>No movies watched</p>`
-    //     return refs.wrapperFilms.insertAdjacentHTML('beforeend', markup)
-    //     return clearLib()
-    // }
+    
+    else {
+        const textLibrary = { text: 'No movies watched' };
+        return clearLib(textLibrary)
+    }
     
 }
 
 export function onBtnQueueClick() {
-    // clearMainContainer();
+    clearMainContainer();
     const btnWatched = document.querySelector('.js-btn-watched');
     const btnQueue = document.querySelector('.js-btn-queue');
     btnWatched.classList.remove("isActive");
@@ -41,18 +41,17 @@ export function onBtnQueueClick() {
     let filmQueue = load('queue');
     
     if (filmQueue.length !== 0) {
-        clearMainContainer();//*
         updateLDate(filmQueue);
         updateLGenres(filmQueue);
         updateLRating(filmQueue);
         
         renderTamplLibrary(filmQueue);
     }
-    // else {
-    //     console.log('No movies que')
-    //     let markup = `<p>No movies added</p>`
-    //     return refs.wrapperFilms.insertAdjacentHTML('beforeend', markup)
-    // }
+    
+    else {
+        const textLibrary = { text: 'No movies added' };
+        return clearLib(textLibrary)
+    }
     
 }
 
