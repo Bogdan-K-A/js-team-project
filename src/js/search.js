@@ -5,7 +5,7 @@ import mainGallery from '../templates/card-film.hbs';
 
 import genresData from './data/genresData.json';
 import { onCutDate, onToggleGenresData } from './components/newData';
-
+import { updateGenres } from './getCards'
 const { galleryList, inputQuery, inputForm, errorMsg } = refs;
 
 inputForm.addEventListener('submit', onSearchSubmit);
@@ -26,7 +26,8 @@ async function onSearchSubmit(e) {
       return;
     }
     onCutDate(data);
-    onToggleGenresData(data, genresData);
+    updateGenres(data)
+    // onToggleGenresData(data, genresData);
     const markup = mainGallery(data);
     galleryList.insertAdjacentHTML('beforeend', markup);
   } catch (err) {

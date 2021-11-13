@@ -71,10 +71,10 @@
   opacity: 0;
 
   @media screen and (max-width: 767px) {
-    top: 45px;
+    top: 40px;
     left: 20px;
-    width: 240px;
-    height: 360px;
+    width: 238px;
+    height: 356px;
   }
   @media screen and (min-width: $w-tablet) and (max-width: 1023px) {
     top: 42px;
@@ -109,6 +109,7 @@
 }
 .movie_modal__title {
   position: absolute;
+  bottom: 180px;
   @media screen and (max-width: 767px) {
     left: calc(50% - 50px);
   }
@@ -119,9 +120,11 @@
     left: calc(50% - 310px);
   }
   font-family: $font-primary;
-  font-size: 34px;
+  font-size: 24px;
 
-  color: $third-color;
+  color: $action-message-color;
   background-color: $bg-color-futer;
-  cursor: pointer;
+  opacity: 0.5;
+  // cursor: pointer;
+  border-radius: 10%;
 }
