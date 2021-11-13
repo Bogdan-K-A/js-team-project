@@ -16,8 +16,6 @@ export default class ApiService {
 
     localStorage.setItem('films', JSON.stringify(result));
 
-    this.increamentPage();
-
     return result;
   }
 
@@ -75,7 +73,7 @@ export default class ApiService {
   async getFetchTrailerSearch(id) {
     const url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${this.API_KEY}&language=en-US`;
     try {
-      const result = await fetch(`${url}`)
+      const result = await fetch(`${url}`);
       const response = result.json();
       return response;
     } catch (err) {

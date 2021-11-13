@@ -74,7 +74,7 @@ export function updateGenres(data) {
   return data;
 }
 
-function createCardFilm(data) {
+export function createCardFilm(data) {
   return card(data);
 }
 
