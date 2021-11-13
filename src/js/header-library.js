@@ -1,5 +1,7 @@
 import myFilter from '../templates/header-library.hbs';
 
+import { getLibrary } from './linkMyLibrary'; //*
+
 const libraryPage = document.querySelector('.site-nav__link-library');
 const headerHome = document.querySelector('.header');
 const pageHome = document.querySelector('.site-nav__link-home');
@@ -15,7 +17,7 @@ function addLibraryPage (e) {
     pageHome.classList.remove('link__current');
     libraryPage.classList.add('link__current');
     searchQuery.classList.add('invisible')
-    
+    getLibrary() //*
 };
 
 function removeEvent (e) {
