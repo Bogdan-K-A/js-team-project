@@ -6,7 +6,8 @@
         <svg class="logo__icon icon" width="24" height="24">
           <use href="./images/icon/icons.svg#icon-film"></use>
         </svg>
-        <span class="title">Filmoteka</span></a>
+        <span class="title">Filmoteka</span></a
+      >
       <ul class="site__nav list">
         <li class="site-nav__item">
           <a id="home" class="site-nav__link-home link link__current" href="./index.html">Home</a>
@@ -16,6 +17,22 @@
         </li>
       </ul>
     </nav>
+    <div class="toolbar">
+      <!-- Разметка переключателя темы -->
+      <div class="theme-switch">
+        <div class="theme-switch__control">
+          <input
+            class="theme-switch__toggle"
+            type="checkbox"
+            name="theme"
+            id="theme-switch-toggle"
+            aria-label="Переключить между тёмной и светлой темой"
+          />
+          <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle"> </label>
+          <div aria-hidden="true" class="theme-switch__marker"></div>
+        </div>
+      </div>
+    </div>
     <div class="header-form">
       <form class="header__input">
         <input type="text" name="input" class="form-input" placeholder="Search movies" />
