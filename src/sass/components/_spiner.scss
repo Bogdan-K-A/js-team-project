@@ -1,15 +1,32 @@
 
+// .spiner {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
 
-.container {
-    // height: 50vh;
-    width: 100vw;
+//   width: 100%;
+//   height: 100%;
+// }
+
+.spiner__container {
+     height: 50vh;
+    width: 100vw; 
     font-family: Helvetica;
+//
+// position: absolute;
+// top: 0;
+// left: 0;
+
+// width: 100%;
+// height: 100%;
+
+
   }
   
   .loader {
     height: 20px;
     width: 250px;
-   position: absolute;
+    position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
