@@ -17,10 +17,12 @@ document.addEventListener('keydown', event => {
 
 function openModal() {
   refsModal.block.classList.remove('is-hidden');
+  document.body.style.overflow = "hidden"
 }
 
 function closeModal() {
   refsModal.block.classList.add('is-hidden');
+  document.body.style.overflow = ""
 }
 
 function closeModalClickOnBackdrop(e) {
