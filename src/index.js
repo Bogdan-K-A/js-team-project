@@ -9,7 +9,6 @@ import './js/clearLibrary';
 
 import './js/clearLibrary';
 
-
 import './js/modal';
 
 import './js/search';
@@ -19,3 +18,5 @@ import './js/addToLocalStorLibrary.js';
 import './js/modalTrailer';
 
 import './js/components/button-scroll.js';
+
+import './js/themes';
