@@ -51,4 +51,4 @@ module.exports={genres:[{id:28,name:"Action"},{id:12,name:"Adventure"},{id:16,na
 },{"../refs.js":"VyiV"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");var r=i(require("./js/apiService")),e=i(require("./js/getCards")),s=i(require("./js/header-library"));function i(r){return r&&r.__esModule?r:{default:r}}require("./js/pagination"),require("./js/clearLibrary"),require("./js/modal"),require("./js/search"),require("./js/addToLocalStorLibrary.js"),require("./js/modalTrailer"),require("./js/components/button-scroll.js");
 },{"./sass/main.scss":"clu1","./js/apiService":"eQwa","./js/getCards":"NpGb","./js/header-library":"XgnG","./js/pagination":"o8lo","./js/clearLibrary":"aqgU","./js/modal":"RSqK","./js/search":"HU2o","./js/addToLocalStorLibrary.js":"RQWD","./js/modalTrailer":"Wviz","./js/components/button-scroll.js":"OYgZ"}]},{},["Focm"], null)
-//# sourceMappingURL=/js-team-project/src.72bcd784.js.map
+//# sourceMappingURL=/js-team-project/src.66ce0f2d.js.map
