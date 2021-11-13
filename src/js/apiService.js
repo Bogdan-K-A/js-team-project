@@ -29,6 +29,19 @@ export default class ApiService {
     console.log(result);
   }
 
+  async getQueryMovie(q) {
+    localStorage.setItem('query', q);
+    const queryValue = `&query=${q}`;
+    const queryData = `https://api.themoviedb.org/3/search/movie?api_key=${this.API_KEY}&language=en-US&page=${this.page}&include_adult=false`;
+    try {
+      const result = await fetch(`${queryData}${queryValue}`);
+      const response = result.json();
+      return response;
+    } catch (err) {
+      console.log('error');
+    }
+  }
+
   async fetchGenre() {
     const URL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${this.API_KEY}&language=en-US`;
 

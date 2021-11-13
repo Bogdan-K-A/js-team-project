@@ -133,6 +133,7 @@
 
 .form-input {
   background: transparent;
+  padding-bottom: 4px;
   border: none;
   border-bottom: 1px solid $front-color;
   outline: none;
@@ -155,7 +156,7 @@
 .search__icon {
   fill: $front-color;
   position: absolute;
-  top: 0;
+  top: -2px;
   transform: translateX(-20px) translateY(25%);
 }
 
@@ -168,33 +169,3 @@
 .hide {
   display: none;
 }
-
-// Стили ссылки для My library
-
-// .header-library {
-//   padding-top: 40px;
-//   min-height: 230px;
-
-//   // 1X увеличение
-//   background-image: url('../images/header/background/mobile/mobile-library-bg1x.jpg');
-//   background-repeat: no-repeat;
-//   background-size: cover;
-//   background-position: center;
-//   @media screen and (min-width: $w-tablet) {
-//     background-image: url('../images/header/background/tablet/tablet-library-bg1x.jpg');
-//   }
-//   @media screen and (min-width: $w-desctop) {
-//     background-image: url('../images/header/background/desktop/desktop-library-bg1x.jpg');
-//   }
-
-//   // 2X увеличение
-//   @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-//     background-image: url('../images/header/background/mobile/mobile-library-bg2x.jpg');
-//     @media screen and (min-width: $w-tablet) {
-//       background-image: url('../images/header/background/tablet/tablet-library-bg2x.jpg');
-//     }
-//     @media screen and (min-width: $w-desctop) {
-//       background-image: url('../images/header/background/desktop/desktop-library-bg2x.jpg');
-//     }
-//   }
-// }

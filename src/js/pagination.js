@@ -17,30 +17,36 @@ async function createPag(page) {
   let activeLi;
   let beforePage = page - 1; // 20 - 1 = 19
   let afterPage = page + 1; // 20 + 1 = 21
+
   const data = await service.fetchFilms();
   let totalPage = data.total_pages;
 
   // let beforePage = service.decrementPage(); // 20 - 1 = 19
   // let afterPage = service.increamentPage(); // 20 - 1 = 19
   // clearPage();
+
   /* ------------------------- добавляет стрелку влево ------------------------ */
   if (page > 1) {
     //если значение страницы больше 1, добавляем новый li, который является предыдущей кнопкой
     // liTag += `<li class="pagination-arrow" data-index="${page - 1}"><svg class="icon">
     //                 <use href="./images/icon/icons.svg#icon-arrow-left"></use>
     //             </svg></li>`;
+
+    // ----------------------------------------
+
     liTag += `<li class="pagination-arrow" data-index="${
       page - 1
-    }"><svg class="icon" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path
-    d="M12.6666 8H3.33325"
+    }"><svg class="pag-icon" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+        d="M12.6666 8H3.33325"
 
-  />
-<path
-    d="M7.99992 12.6667L3.33325 8.00004L7.99992 3.33337"
+      />
+    <path
+        d="M7.99992 12.6667L3.33325 8.00004L7.99992 3.33337"
 
-  />
-</svg></li>`;
+      />
+    </svg></li>`;
+    // ----------------------------------------
   }
 
   /* ---------------------- добавляет ... вначале после 1 --------------------- */
@@ -51,6 +57,7 @@ async function createPag(page) {
     if (page > 3) {
       //если значение страницы больше 3, добавляем новый тег li с значением ...
       liTag += `<li class="dots"><span>. . .</span></li>`;
+
       if (page > 4) {
         beforePage -= 1;
       }
@@ -117,12 +124,15 @@ async function createPag(page) {
     // liTag += `<li class="pagination-arrow"  data-index="${page + 1}" ><svg class="icon">
     //                 <use href="./images/icon/arrow-r.svg"></use>
     //             </svg></li>`;
+
+    // ---------------------------------
     liTag += `<li class="pagination-arrow"  data-index="${
       page + 1
-    }"><svg class="icon" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M3.33341 8H12.6667"/>
-<path d="M8.00008 12.6667L12.6667 8.00004L8.00008 3.33337" />
-</svg></li>`;
+    }"><svg class="pag-icon" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3.33341 8H12.6667"/>
+    <path d="M8.00008 12.6667L12.6667 8.00004L8.00008 3.33337" />
+    </svg></li>`;
+    // ---------------------------------
   }
   pagination.innerHTML = liTag;
 }
@@ -130,6 +140,7 @@ async function createPag(page) {
 /* -------------------------- переключатель страниц ------------------------- */
 async function switchesPages(e) {
   if (e.target.tagName !== 'LI') return;
+
   clearPage();
 
   service.page = +e.target.dataset.index;

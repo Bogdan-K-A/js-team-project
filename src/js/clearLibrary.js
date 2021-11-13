@@ -1,19 +1,20 @@
 import clearLibrary from '../templates/clear-library.hbs';
-const galleryLib = document.querySelector('.content');
-const backHome = document.querySelector('.clear-library_btn');
+const wrapperFilms = document.querySelector('.wrapper-films');//*
+const btnWatched = document.querySelector('.js-btn-watched'); //*
+const btnQueue = document.querySelector('.js-btn-queue'); //*
 
 function refreshPage() {
+  btnWatched.removeEventListener('click', onBtnWatchedClick); //*
+  btnQueue.removeEventListener('click', onBtnQueueClick); //*
+
   document.location.reload();
 }
 
-export function clearLib() {
-  galleryLib.innerHTML = '';
-  galleryLib.insertAdjacentHTML('beforeend', clearLibrary());
+export function clearLib(text) {
+  wrapperFilms.insertAdjacentHTML('beforeend', clearLibrary(text));
   setTimeout(() => {
   const backHome = document.querySelector('.clear-library_btn');
-   backHome.addEventListener('click', refreshPage);
-}, 1000);
+    backHome.addEventListener('click', refreshPage);
+}, 1000); 
 }
 
- 
-// clearLib()

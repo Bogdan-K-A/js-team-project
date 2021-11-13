@@ -1,13 +1,15 @@
 import { load } from './linkMyLibrary.js' //Local Storage
-import { updateDate, updateRating, updateGenres } from './getCards';
+import { updateLDate, updateLRating, updateLGenres } from './linkMyLibrary';
 
 import renderTamplLibrary from './library-container.js';
 const refs = {
     wrapperFilms: document.querySelector('.wrapper-films')
 };
 
+import { clearLib } from './clearLibrary'; 
+
 export function onBtnWatchedClick() {
-    clearMainContainer();
+    clearMainContainer(); 
     const btnWatched = document.querySelector('.js-btn-watched');
     const btnQueue = document.querySelector('.js-btn-queue');
     btnWatched.classList.add("isActive");
@@ -15,16 +17,17 @@ export function onBtnWatchedClick() {
 
     let filmWatched = load('watched');
     
-    if (filmWatched !== undefined) {
-        updateDate(filmWatched);
-        updateGenres(filmWatched);
-        updateRating(filmWatched);
+    if (filmWatched.length !== 0) {
+        updateLDate(filmWatched);
+        updateLGenres(filmWatched);
+        updateLRating(filmWatched);
         
-        renderTamplLibrary(filmWatched.results);
+        renderTamplLibrary(filmWatched);
     }
+    
     else {
-        let markup = `<p>No movies watched</p>`
-        return refs.wrapperFilms.insertAdjacentHTML('beforeend', markup)
+        const textLibrary = { text: 'No movies watched' };
+        return clearLib(textLibrary)
     }
     
 }
@@ -37,16 +40,17 @@ export function onBtnQueueClick() {
     btnQueue.classList.add("isActive");
     let filmQueue = load('queue');
     
-    if (filmQueue !== undefined) {
-        updateDate(filmQueue);
-        updateGenres(filmQueue);
-        updateRating(filmQueue);
+    if (filmQueue.length !== 0) {
+        updateLDate(filmQueue);
+        updateLGenres(filmQueue);
+        updateLRating(filmQueue);
         
-        renderTamplLibrary(filmQueue.results);
+        renderTamplLibrary(filmQueue);
     }
+    
     else {
-        let markup = `<p>No movies added</p>`
-        return refs.wrapperFilms.insertAdjacentHTML('beforeend', markup)
+        const textLibrary = { text: 'No movies added' };
+        return clearLib(textLibrary)
     }
     
 }
@@ -54,5 +58,6 @@ export function onBtnQueueClick() {
 function clearMainContainer() {
   refs.wrapperFilms.innerHTML = '';
 }
+
 
 

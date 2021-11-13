@@ -27,10 +27,12 @@
   color: #545454;
 
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-  margin-bottom: 10px;
+  padding-top: 12px;
+  // margin-bottom: 10px;
 }
+
 .list {
+  margin-top: 5px;
   margin-right: 4px;
 }
 .footer__container-list-icon {
@@ -50,8 +52,11 @@
     align-items: center;
     justify-content: center;
   }
-}
 
+  .footer__container-list {
+    margin-bottom: 10px;
+  }
+}
 .students {
   border-bottom: 1px solid #545454;
 }
@@ -68,3 +73,46 @@
 
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
+// Анимация сердца в footer
+
+.heart {
+  animation: heartbeat 1.25s infinite;
+}
+
+.heart:before,
+.heart:after {
+  content: '';
+  border-radius: 50%;
+  height: 6px;
+  position: absolute;
+  width: 6px;
+
+  @media screen and (min-width: $w-tablet) {
+    height: 7px;
+    width: 7px;
+  }
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(0.5) rotate(-0deg);
+  }
+  5% {
+    transform: scale(0.75) rotate(-0deg);
+  }
+  10% {
+    transform: scale(1) rotate(-0deg);
+  }
+  15% {
+    transform: scale(1.25) rotate(-0deg);
+  }
+  20% {
+    transform: scale(1.5) rotate(-0deg);
+  }
+  25% {
+    transform: scale(1.75) rotate(-0deg);
+  }
+}
+
+// ================================

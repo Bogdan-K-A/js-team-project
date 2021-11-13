@@ -8,11 +8,14 @@ import './js/pagination';
 import './js/clearLibrary';
 
 import './js/clearLibrary';
-import linkMyLibrary from './js/linkMyLibrary';
-import btnWatchedQueue from './js/btnWatched-Queue';
+
+
 import './js/modal';
 
-import './js/addToLocalStorLibrary.js'
+import './js/search';
+
+import './js/addToLocalStorLibrary.js';
 
 import './js/modalTrailer';
 
+import './js/components/button-scroll.js';
