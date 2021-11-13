@@ -1,6 +1,6 @@
 const teamInfo = [
   {
-    imgUrl:  "./images/team/bogdan.jpg",
+    imgUrl:  `./images/team/bogdan.jpg`,
     fullname: "Bogdan Kozhoma",
     teamRole: "Team Leader / Developer",
     socialLinks: {
@@ -8,7 +8,6 @@ const teamInfo = [
       githubRef: "https://github.com/Bogdan-K-A",
       telegramRef: "https://t.me/K_Bogdan87"
     }
-
   },
   {
     imgUrl:  "./images/team/dima.jpg",
@@ -90,8 +89,7 @@ const listMarkup = teamInfo.map(makeLi).join('');
 
 const ulContainer = document.querySelector('.js-team-modal__list');
 ulContainer.insertAdjacentHTML("beforeend", listMarkup);
-
-
+ 
 function makeLi({imgUrl, fullname, teamRole, linkedinRef, githubRef, telegramRef}) {
   return `<li class="team-modal__item">
             <div class="team-modal__item-img">
