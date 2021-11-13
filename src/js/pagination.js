@@ -1,6 +1,6 @@
-// import card from '../templates/card-film.hbs';
-import { getCard } from './getCards.js';
+import { getCard, updateDate, updateGenres, updateRating } from './getCards.js';
 import ApiService from './apiService.js';
+import { createCardFilm } from './getCards';
 const service = new ApiService();
 
 const refs = { wrapperFilms: document.querySelector('.wrapper-films') };
@@ -9,15 +9,22 @@ const pagination = document.querySelector('.js-pagination');
 // const listPag = document.querySelector('.list-pagination');
 
 /* ------------------------ РАБОЧИЙ!!!!!!!!!!!!!!!!!! V1----------------------- */
-let totalPage = 20;
 
-function createPag(totalPage, page) {
+createPag(1);
+
+async function createPag(page) {
   let liTag = '';
   let activeLi;
   let beforePage = page - 1; // 20 - 1 = 19
   let afterPage = page + 1; // 20 + 1 = 21
 
-  clearPage();
+  const data = await service.fetchFilms();
+  let totalPage = data.total_pages;
+
+  // let beforePage = service.decrementPage(); // 20 - 1 = 19
+  // let afterPage = service.increamentPage(); // 20 - 1 = 19
+  // clearPage();
+
   /* ------------------------- добавляет стрелку влево ------------------------ */
   if (page > 1) {
     //если значение страницы больше 1, добавляем новый li, который является предыдущей кнопкой
@@ -26,6 +33,7 @@ function createPag(totalPage, page) {
     //             </svg></li>`;
 
     // ----------------------------------------
+
     liTag += `<li class="pagination-arrow" data-index="${
       page - 1
     }"><svg class="pag-icon" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,27 +57,30 @@ function createPag(totalPage, page) {
     if (page > 3) {
       //если значение страницы больше 3, добавляем новый тег li с значением ...
       liTag += `<li class="dots"><span>. . .</span></li>`;
-      beforePage = beforePage - 1;
-      afterPage = afterPage + 1;
+
+      if (page > 4) {
+        beforePage -= 1;
+      }
+      afterPage += 1;
     }
   }
 
   /* ----- сколько страниц или li показывают до текущего li с левого краю ----- */
   if (page === totalPage) {
     //если значение страницы равно общему количеству страниц, вычти -2 из значения предыдущей страницы
-    beforePage = beforePage - 2;
+    beforePage -= 2;
   } else if (page === totalPage - 1) {
     //а если значение страницы равно общему количеству страниц -1, вычти -1 из значения предыдущей страницы
-    beforePage = beforePage - 1;
+    beforePage -= 1;
   }
 
   /* ----------- сколько страниц или li показывают после текущего li с правого краю ---------- */
   if (page === 1) {
     //если значение страницы равно 1, добавь +2 к значению после страницы
-    afterPage = afterPage + 2;
+    afterPage += 2;
   } else if (page === 2) {
     //а если значение страницы равно 2, добавь +1 к значению после страницы
-    afterPage = afterPage + 1;
+    afterPage += 1;
   }
 
   /* --------------------------- добалляет нумерацию -------------------------- */
@@ -79,7 +90,7 @@ function createPag(totalPage, page) {
     }
     if (pageLength === 0) {
       //если pageLangs равно 0, добавляем +1 к значению pageLangth
-      pageLength = pageLength + 1;
+      pageLength += 1;
     }
 
     /* ----------------------- указывает активную страницу ---------------------- */
@@ -103,6 +114,7 @@ function createPag(totalPage, page) {
       //если значение страницы меньше totalPage на -2, тогда показывать последний ... предпоследний
       liTag += `<li class="dots"><span>. . .</span></li>`;
     }
+
     liTag += `<li class="num"  data-index="${totalPage}">${totalPage}</li>`;
   }
 
@@ -125,22 +137,35 @@ function createPag(totalPage, page) {
   pagination.innerHTML = liTag;
 }
 // /* ----------------------------рендерит пагинатор на страницу, createPag(общее кол страниц, начало призагрузке)---------------------------- */
-createPag(totalPage, 1);
 /* -------------------------- переключатель страниц ------------------------- */
-function switchesPages(e) {
+async function switchesPages(e) {
   if (e.target.tagName !== 'LI') return;
-  // console.log(e.target.dataset.index);
-  createPag(totalPage, +e.target.dataset.index);
-  getCard();
+
+  clearPage();
+
+  service.page = +e.target.dataset.index;
+
+  const data = await service.fetchFilms();
+  // console.log(data);
+  updateDate(data);
+
+  updateGenres(data);
+
+  updateRating(data);
+
+  createPag(+e.target.dataset.index);
+
+  refs.wrapperFilms.insertAdjacentHTML('beforeend', createCardFilm(data));
 }
 // /* ---------------------------- очищает страницу при переходе на следующюю ---------------------------- */
 function clearPage() {
   // wrapper.innerHTML = '';
   refs.wrapperFilms.innerHTML = '';
 }
-
+/* --------------------- слгшатель событий на пагинатор --------------------- */
 pagination.addEventListener('click', switchesPages);
 // =================================================================================================================
+
 /* --------------------------------- рабочий V2-------------------------------- */
 
 // let users = [
@@ -159,7 +184,9 @@ pagination.addEventListener('click', switchesPages);
 //   { name: 'name11', age: 23 },
 // ];
 // let numOfCardsPerPage = 2;
+// // let numOfCardsPerPage = service.results;
 // let countOfItems = Math.ceil(users.length / numOfCardsPerPage); //округляет число карточек на странице
+// // let countOfItems = Math.ceil(data.total_results / numOfCardsPerPage); //округляет число карточек на странице
 // let items = [];
 // /* ----------------------- пагинация ---------------------- */
 
@@ -194,8 +221,8 @@ pagination.addEventListener('click', switchesPages);
 //   let pageNum = +item.innerHTML;
 //   let start = (pageNum - 1) * numOfCardsPerPage;
 //   let end = start + numOfCardsPerPage;
-//   // let notes = users.slice(start, end); // заменить API вместо users
 //   let notes = users.slice(start, end); // заменить API вместо users
+//   // let notes = data.total_results.slice(start, end); // заменить API вместо users
 
 //   removeCurrentColorPage();
 
