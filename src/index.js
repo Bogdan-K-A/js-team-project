@@ -20,3 +20,5 @@ import './js/modalTrailer';
 import './js/components/button-scroll.js';
 
 import './js/themes';
+
+import './js/components/spiner.js';
