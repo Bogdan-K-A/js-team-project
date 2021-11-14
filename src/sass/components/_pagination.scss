@@ -18,12 +18,14 @@
   border-radius: 5px;
 }
 
-.dots {
-  margin-right: 4px;
-
+.hide {
   @media screen and (max-width: $w-mobile) {
     display: none;
   }
+}
+
+.dots {
+  margin-right: 4px;
 }
 
 .num,
