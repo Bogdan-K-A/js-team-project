@@ -55,10 +55,13 @@ async function createPag(page) {
         beforePage -= 1;
       }
       afterPage += 1;
+
+      const width = Math.max(window.screen.width, window.innerWidth);
+      console.log(width);
     }
   }
 
-  /* ----- сколько страниц или li показывают до текущего li с левого краю ----- */
+  /* ----- сколько номеров или li показывают до текущего li с левого краю ----- */
   if (page === totalPage) {
     //если значение страницы равно общему количеству страниц, вычти -2 из значения предыдущей страницы
     beforePage -= 2;
