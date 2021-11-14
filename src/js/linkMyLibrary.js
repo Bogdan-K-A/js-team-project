@@ -3,6 +3,7 @@ const refs = { wrapperFilms: document.querySelector('.wrapper-films') };
 import { clearLib } from './clearLibrary'; //*
 import { onBtnWatchedClick, onBtnQueueClick } from './btnWatched-Queue.js';
 
+
 import { getCard, updateDate, updateGenres, updateRating } from './getCards.js';
 import ApiService from './apiService.js';
 import { switchesPages } from './pagination'
@@ -11,12 +12,13 @@ const newService = new ApiService();
 const paginationContainer = document.querySelector('.pagination')
 const pagination = document.querySelector('.js-pagination');
 
+
 // Local Storage
 export const load = key => {
   try {
     const info = localStorage.getItem(key);
 
-      return info === null ? undefined : JSON.parse(info);
+    return info === null ? undefined : JSON.parse(info);
   } catch (err) {
     console.error('Get state error: ', err);
   }
@@ -26,6 +28,7 @@ export const load = key => {
  const r = [];
 export function getLibrary() {
   clearMainContainer();
+
   pagination.removeEventListener('click', switchesPages);
   pagination.addEventListener('click', switchesLibraryPages);
   
@@ -43,31 +46,31 @@ export function getLibrary() {
     
  
 
-    if (filmWatched.length !== 0) {
-        filmWatched.forEach(el => {
-        r.push(el)
-    })
-    }
-    if (filmQueue.length !== 0) {
-        filmQueue.forEach(el => {
-        r.push(el)
-    })
-    }
+
+  if (filmWatched.length !== 0) {
+    filmWatched.forEach(el => {
+      r.push(el);
+    });
+  }
+  if (filmQueue.length !== 0) {
+    filmQueue.forEach(el => {
+      r.push(el);
+    });
+  }
   if (r.length == 0) {
     pagination.removeEventListener('click', switchesPages);
     paginationContainer.innerHTML = '';
     const textLibrary = { text: 'No Movies' };
-    return clearLib(textLibrary)
-    }
-    
-    updateLDate(r);
+    return clearLib(textLibrary);
+  }
 
-    updateLGenres(r);
+  updateLDate(r);
 
-    updateLRating(r);
+  updateLGenres(r);
 
-    renderTamplLibrary(r);
-  
+  updateLRating(r);
+
+  renderTamplLibrary(r);
 }
 
 function clearMainContainer() {
