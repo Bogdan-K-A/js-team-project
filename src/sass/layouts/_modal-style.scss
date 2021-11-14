@@ -108,8 +108,17 @@ table td {
     width: 146px;
   }
 
-  &:hover,
-  &:focus {
+  // &:hover,
+  // &:focus {
+  //   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  //     background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  //   cursor: pointer;
+  //   background-color: #ff6b01;
+  //   color: #ffffff;
+  //   border: none;
+  // }
+  //*
+  &:hover {
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1),
       background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
@@ -117,6 +126,16 @@ table td {
     color: #ffffff;
     border: none;
   }
+  &:focus {
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    // background-color: #ff6b01;
+    // color: #ffffff;
+    // border-color: #ff6b01;
+    // border: none;
+  }
+  //*
 }
 .modal_btn:first-child {
   margin-right: 15px;

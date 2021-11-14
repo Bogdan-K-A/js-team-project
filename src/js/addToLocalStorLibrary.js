@@ -36,6 +36,27 @@ export function addToLocalStorWatched() {
       btnWatch.classList.add('active');
 
       addLocalStorObjectWatch();
+      btnWatch.classList.add('active')
+      // забирає обєкт з фільмом який зараз на модальному вікні і розпарсує його
+      const films = localStorage.getItem('currentFilm');
+      const addFilms = JSON.parse(films);
+      // забирає обєкт з LocalStoreg і розпарсує його
+      const currentStore = localStorage.getItem('watched');
+      const parseStore = JSON.parse(currentStore);
+      // добавляє фільм в обєкт і записує в LocalStoreg
+      parseStore.push(addFilms);
+      localStorage.setItem('watched', JSON.stringify(parseStore));
+
+      //======Перевірка та видалення того ж фільму з Queue===========*
+      const btnQueue = document.querySelector('.modal_btn_queue');
+      btnQueue.textContent = 'add to queue';
+      btnQueue.classList.remove('active');
+      const currentQ = localStorage.getItem('queue');
+      const parseQ = JSON.parse(currentQ);
+
+      const removeFilms = parseQ.filter(e => e.id !== addFilms.id);
+      localStorage.setItem('queue', JSON.stringify(removeFilms));
+      //=================================================*
 
       // видаляє фільм
     } else if (btnWatch.textContent === 'remowe to Watched') {
@@ -91,6 +112,17 @@ export function addToLocalStorQueue() {
       btnQueue.classList.add('active');
 
       addLocalStorObjectQueue();
+
+      //======Перевірка та видалення того ж фільму з Watched===========*
+      const btnWatch = document.querySelector('.modal_btn_wotched');
+      btnWatch.textContent = 'add to Watched';
+      btnWatch.classList.remove('active');
+      const currentW = localStorage.getItem('watched');
+      const parseW = JSON.parse(currentW);
+
+      const removeFilms = parseW.filter(e => e.id !== addFilms.id);
+      localStorage.setItem('watched', JSON.stringify(removeFilms));
+      //==========================================*
 
       // видаляє фільм
     } else if (btnQueue.textContent === 'remowe to queue') {
