@@ -18,8 +18,8 @@
   border-radius: 5px;
 }
 
-.hide {
-  @media screen and (max-width: $w-mobile) {
+@media screen and (max-width: $w-mobile) {
+  .hide {
     display: none;
   }
 }
