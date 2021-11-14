@@ -20,3 +20,6 @@ import './js/modalTrailer';
 import './js/components/button-scroll.js';
 
 import './js/themes';
+
+// import './js/makeMarkupModalTeam';
+import './js/team-modal';

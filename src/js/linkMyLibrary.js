@@ -26,7 +26,6 @@ export function getLibrary() {
     btnQueue.addEventListener('click', onBtnQueueClick);
     
     let filmWatched = load('watched');
-    
     let filmQueue = load('queue');
     
   const r = [];
