@@ -1,4 +1,3 @@
-
 const modalDiv = document.querySelector('.modal_backdrop');
 
 renderWatch();
@@ -166,5 +165,3 @@ export function renderBtnQueue() {
       btnQueue.classList.add('active')
   }
 }
-
-//*
