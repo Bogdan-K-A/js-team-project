@@ -18,9 +18,16 @@
   border-radius: 5px;
 }
 
+.hide {
+  @media screen and (max-width: $w-mobile) {
+    display: none;
+  }
+}
+
 .dots {
   margin-right: 4px;
 }
+
 .num,
 .pagination-arrow {
   margin-right: 4px;
