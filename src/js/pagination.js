@@ -43,8 +43,6 @@ async function createPag(page) {
   }
 
   /* ---------------------- добавляет ... вначале после 1 --------------------- */
-  const width = Math.max(window.screen.width, window.innerWidth);
-  console.log(width);
   if (page > 2) {
     //если значение страницы больше 2, добавляем новый тег li с значением 1
     liTag += `<li class="num dots" data-index="1">1</li>`;
