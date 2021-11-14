@@ -21,4 +21,8 @@ import './js/components/button-scroll.js';
 
 import './js/themes';
 
+
 import './js/components/spiner.js';
+
+// import './js/makeMarkupModalTeam';
+import './js/team-modal';

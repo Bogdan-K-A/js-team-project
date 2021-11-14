@@ -9,9 +9,17 @@ body.dark-theme {
 }
 
 .toolbar {
+  position: absolute;
+  bottom: -50px;
+  right: 20px;
   display: flex;
   justify-content: flex-end;
-  padding: 16px 0px;
+  padding: 4px 0px;
+
+  @media screen and (min-width: 768px) {
+    bottom: 0;
+    right: 70px;
+  }
 }
 
 .theme-switch {

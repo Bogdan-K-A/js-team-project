@@ -10,7 +10,7 @@ const pagination = document.querySelector('.js-pagination');
 
 createPag(1);
 
-async function createPag(page) {
+export async function createPag(page) {
   let liTag = '';
   let activeLi;
   let beforePage = page - 1; // 20 - 1 = 19
@@ -45,7 +45,7 @@ async function createPag(page) {
   /* ---------------------- добавляет ... вначале после 1 --------------------- */
   if (page > 2) {
     //если значение страницы больше 2, добавляем новый тег li с значением 1
-    liTag += `<li class="num" data-index="1">1</li>`;
+    liTag += `<li class="num hide" data-index="1">1</li>`;
 
     if (page > 3) {
       //если значение страницы больше 3, добавляем новый тег li с значением ...
@@ -58,7 +58,7 @@ async function createPag(page) {
     }
   }
 
-  /* ----- сколько страниц или li показывают до текущего li с левого краю ----- */
+  /* ----- сколько номеров или li показывают до текущего li с левого краю ----- */
   if (page === totalPage) {
     //если значение страницы равно общему количеству страниц, вычти -2 из значения предыдущей страницы
     beforePage -= 2;
@@ -107,7 +107,7 @@ async function createPag(page) {
       liTag += `<li class="dots"><span>. . .</span></li>`;
     }
 
-    liTag += `<li class="num"  data-index="${totalPage}">${totalPage}</li>`;
+    liTag += `<li class="num hide"  data-index="${totalPage}">${totalPage}</li>`;
   }
 
   /* ------------------------ добавляет стрелку вправо ------------------------ */
@@ -130,7 +130,7 @@ async function createPag(page) {
 }
 
 /* -------------------------- переключатель страниц ------------------------- */
-async function switchesPages(e) {
+export async function switchesPages(e) {
   if (e.target.tagName !== 'LI') return;
 
   clearPage();
@@ -155,3 +155,4 @@ function clearPage() {
 }
 /* --------------------- слушатель событий на пагинатор --------------------- */
 pagination.addEventListener('click', switchesPages);
+

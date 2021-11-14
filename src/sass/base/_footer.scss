@@ -30,7 +30,7 @@
   padding-top: 12px;
   // margin-bottom: 10px;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $w-tablet) {
   .list {
     margin-top: 5px;
   }
@@ -61,6 +61,7 @@
     margin-bottom: 10px;
   }
 }
+
 .students {
   border-bottom: 1px solid #545454;
 }
