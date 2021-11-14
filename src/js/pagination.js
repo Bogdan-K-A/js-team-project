@@ -49,7 +49,7 @@ async function createPag(page) {
 
     if (page > 3) {
       //если значение страницы больше 3, добавляем новый тег li с значением ...
-      liTag += `<li class="dots hide"><span>. . .</span></li>`;
+      liTag += `<li class="dots"><span>. . .</span></li>`;
 
       if (page > 4) {
         beforePage -= 1;
@@ -104,7 +104,7 @@ async function createPag(page) {
 
     if (page < totalPage - 2) {
       //если значение страницы меньше totalPage на -2, тогда показывать последний ... предпоследний
-      liTag += `<li class="dots hide"><span>. . .</span></li>`;
+      liTag += `<li class="dots"><span>. . .</span></li>`;
     }
 
     liTag += `<li class="num hide"  data-index="${totalPage}">${totalPage}</li>`;

@@ -26,6 +26,10 @@
 
 .dots {
   margin-right: 4px;
+
+  @media screen and (max-width: $w-mobile) {
+    display: none;
+  }
 }
 
 .num,
