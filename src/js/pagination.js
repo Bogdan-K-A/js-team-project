@@ -43,9 +43,11 @@ async function createPag(page) {
   }
 
   /* ---------------------- добавляет ... вначале после 1 --------------------- */
+  const width = Math.max(window.screen.width, window.innerWidth);
+  console.log(width);
   if (page > 2) {
     //если значение страницы больше 2, добавляем новый тег li с значением 1
-    liTag += `<li class="num" data-index="1">1</li>`;
+    liTag += `<li class="num dots" data-index="1">1</li>`;
 
     if (page > 3) {
       //если значение страницы больше 3, добавляем новый тег li с значением ...
@@ -55,9 +57,6 @@ async function createPag(page) {
         beforePage -= 1;
       }
       afterPage += 1;
-
-      const width = Math.max(window.screen.width, window.innerWidth);
-      console.log(width);
     }
   }
 
@@ -110,7 +109,7 @@ async function createPag(page) {
       liTag += `<li class="dots"><span>. . .</span></li>`;
     }
 
-    liTag += `<li class="num"  data-index="${totalPage}">${totalPage}</li>`;
+    liTag += `<li class="num dots"  data-index="${totalPage}">${totalPage}</li>`;
   }
 
   /* ------------------------ добавляет стрелку вправо ------------------------ */
