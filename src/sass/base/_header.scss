@@ -133,7 +133,7 @@
 
 .form-input {
   background: transparent;
-  padding-bottom: 4px;
+  padding: 4px 2px;
   border: none;
   border-bottom: 1px solid $front-color;
   outline: none;
@@ -156,7 +156,7 @@
 .search__icon {
   fill: $front-color;
   position: absolute;
-  top: -2px;
+  top: 0;
   transform: translateX(-20px) translateY(25%);
 }
 

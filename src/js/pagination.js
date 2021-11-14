@@ -5,8 +5,6 @@ const service = new ApiService();
 
 const refs = { wrapperFilms: document.querySelector('.wrapper-films') };
 const pagination = document.querySelector('.js-pagination');
-// const wrapper = document.querySelector('.wrapper');
-// const listPag = document.querySelector('.list-pagination');
 
 /* ------------------------ РАБОЧИЙ!!!!!!!!!!!!!!!!!! V1----------------------- */
 
@@ -21,10 +19,6 @@ async function createPag(page) {
   const data = await service.fetchFilms();
   let totalPage = data.total_pages;
 
-  // let beforePage = service.decrementPage(); // 20 - 1 = 19
-  // let afterPage = service.increamentPage(); // 20 - 1 = 19
-  // clearPage();
-
   /* ------------------------- добавляет стрелку влево ------------------------ */
   if (page > 1) {
     //если значение страницы больше 1, добавляем новый li, который является предыдущей кнопкой
@@ -33,7 +27,6 @@ async function createPag(page) {
     //             </svg></li>`;
 
     // ----------------------------------------
-
     liTag += `<li class="pagination-arrow" data-index="${
       page - 1
     }"><svg class="pag-icon" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +45,7 @@ async function createPag(page) {
   /* ---------------------- добавляет ... вначале после 1 --------------------- */
   if (page > 2) {
     //если значение страницы больше 2, добавляем новый тег li с значением 1
-    liTag += `<li class="num" data-index="1">1</li>`;
+    liTag += `<li class="num hide" data-index="1">1</li>`;
 
     if (page > 3) {
       //если значение страницы больше 3, добавляем новый тег li с значением ...
@@ -65,7 +58,7 @@ async function createPag(page) {
     }
   }
 
-  /* ----- сколько страниц или li показывают до текущего li с левого краю ----- */
+  /* ----- сколько номеров или li показывают до текущего li с левого краю ----- */
   if (page === totalPage) {
     //если значение страницы равно общему количеству страниц, вычти -2 из значения предыдущей страницы
     beforePage -= 2;
@@ -97,7 +90,6 @@ async function createPag(page) {
     if (page === pageLength) {
       //если значение страницы равно pageLength, тогда назначаем активную строку из переменной activeLy
       activeLi = 'active';
-      // service.increamentPage();
     } else {
       // в противном случае оставляем пустую строку в переменной activeLi
       activeLi = '';
@@ -115,7 +107,7 @@ async function createPag(page) {
       liTag += `<li class="dots"><span>. . .</span></li>`;
     }
 
-    liTag += `<li class="num"  data-index="${totalPage}">${totalPage}</li>`;
+    liTag += `<li class="num hide"  data-index="${totalPage}">${totalPage}</li>`;
   }
 
   /* ------------------------ добавляет стрелку вправо ------------------------ */
@@ -136,7 +128,7 @@ async function createPag(page) {
   }
   pagination.innerHTML = liTag;
 }
-// /* ----------------------------рендерит пагинатор на страницу, createPag(общее кол страниц, начало призагрузке)---------------------------- */
+
 /* -------------------------- переключатель страниц ------------------------- */
 async function switchesPages(e) {
   if (e.target.tagName !== 'LI') return;
@@ -146,7 +138,7 @@ async function switchesPages(e) {
   service.page = +e.target.dataset.index;
 
   const data = await service.fetchFilms();
-  // console.log(data);
+
   updateDate(data);
 
   updateGenres(data);
@@ -159,119 +151,7 @@ async function switchesPages(e) {
 }
 // /* ---------------------------- очищает страницу при переходе на следующюю ---------------------------- */
 function clearPage() {
-  // wrapper.innerHTML = '';
   refs.wrapperFilms.innerHTML = '';
 }
-/* --------------------- слгшатель событий на пагинатор --------------------- */
+/* --------------------- слушатель событий на пагинатор --------------------- */
 pagination.addEventListener('click', switchesPages);
-// =================================================================================================================
-
-/* --------------------------------- рабочий V2-------------------------------- */
-
-// let users = [
-//   // вложыть функцию высова списка фильмов
-
-//   { name: 'name1', age: 23 },
-//   { name: 'name2', age: 23 },
-//   { name: 'name3', age: 23 },
-//   { name: 'name4', age: 23 },
-//   { name: 'name5', age: 23 },
-//   { name: 'name6', age: 23 },
-//   { name: 'name7', age: 23 },
-//   { name: 'name8', age: 23 },
-//   { name: 'name9', age: 23 },
-//   { name: 'name10', age: 23 },
-//   { name: 'name11', age: 23 },
-// ];
-// let numOfCardsPerPage = 2;
-// // let numOfCardsPerPage = service.results;
-// let countOfItems = Math.ceil(users.length / numOfCardsPerPage); //округляет число карточек на странице
-// // let countOfItems = Math.ceil(data.total_results / numOfCardsPerPage); //округляет число карточек на странице
-// let items = [];
-// /* ----------------------- пагинация ---------------------- */
-
-// for (let i = 1; i <= countOfItems; i++) {
-//   let li = document.createElement('li');
-//   li.classList = 'num';
-
-//   li.innerHTML = i;
-
-//   // console.log(li);
-
-//   pagination.appendChild(li);
-//   items.push(li);
-// }
-
-// /* --------------------- вызов функции текущей страницы --------------------- */
-// showPage(items[0]);
-
-// // присваивает слушатель событий к каждой цифре и автоматически ращитывает количество страниц
-
-// for (const item of items) {
-//   item.addEventListener('click', function () {
-//     showPage(item);
-//     service.increamentPage();
-//     // console.log(service);
-//     getCard();
-//     // console.log(item);
-//   });
-// }
-// /* -------------------- показывает подсвечивает выбранную страницу ------------------- */
-// function showPage(item) {
-//   let pageNum = +item.innerHTML;
-//   let start = (pageNum - 1) * numOfCardsPerPage;
-//   let end = start + numOfCardsPerPage;
-//   let notes = users.slice(start, end); // заменить API вместо users
-//   // let notes = data.total_results.slice(start, end); // заменить API вместо users
-
-//   removeCurrentColorPage();
-
-//   currentColorPage(item);
-
-//   clearPage();
-
-//   createUl();
-
-//   addsLiToUl(notes);
-// }
-
-// /* --------------------  подсвечивает текущюю страницу ------------------- */
-// function currentColorPage(item) {
-//   item.classList.add('active');
-// }
-// /* ---------------------------- очищает текущий цвет страницы при переходе на следующюю ---------------------------- */
-// function removeCurrentColorPage() {
-//   let activeLi = document.querySelector('.active');
-//   if (activeLi) {
-//     activeLi.classList.remove('active');
-//   }
-// }
-
-// /* ---------------------------- очищает страницу при переходе на следующюю ---------------------------- */
-// function clearPage() {
-//   // wrapper.innerHTML = '';
-//   refs.wrapperFilms.innerHTML = '';
-// }
-
-// /* ---------------------------- добавляет список на страницу ul--------------------------- */
-// function createUl() {
-//   let ul = document.createElement('ul');
-//   // wrapper.appendChild(ul);
-//   refs.wrapperFilms.appendChild(ul);
-//   ul.classList = 'movie-list';
-// }
-
-// /* ---------------------------- добавляет элементы li в список ul--------------------------- */
-// function addsLiToUl(notes) {
-//   let listPag = document.querySelector('.movie-list');
-//   for (const note of notes) {
-//     let itemMovie = [];
-
-//     let li = document.createElement('li');
-//     // li.innerHTML = note.name; // вложить шаблон для списка фильмов
-//     listPag.appendChild(li);
-//     itemMovie.push(li);
-//   }
-// }
-
-// =================================================================================================================================

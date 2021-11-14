@@ -5,6 +5,10 @@
   fill: $third-color;
   width: 100%;
   height: 100%;
+
+  @media screen and(min-width: $w-mobile) {
+    left: 60px;
+  }
 }
 
 .btn-up {
