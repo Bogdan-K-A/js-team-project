@@ -4,10 +4,9 @@ import { clearLib } from './clearLibrary'; //*
 import { onBtnWatchedClick, onBtnQueueClick } from './btnWatched-Queue.js';
 
 
-import { getCard, updateDate, updateGenres, updateRating } from './getCards.js';
+import { getCard, updateDate, updateGenres, updateRating, createCardFilm } from './getCards.js';
 import ApiService from './apiService.js';
 import { switchesPages } from './pagination'
-import { createCardFilm } from './getCards';
 const newService = new ApiService();
 const paginationContainer = document.querySelector('.pagination')
 const pagination = document.querySelector('.js-pagination');
@@ -25,7 +24,15 @@ export const load = key => {
 };
 
 // Сlick on link "My Library"
- const r = [];
+  
+let filmWatched = load('watched');
+let filmQueue = load('queue');
+let allMovies = [...filmWatched, ...filmQueue];
+console.log(allMovies);
+
+
+let b = []
+const r = [];
 export function getLibrary() {
   clearMainContainer();
 
@@ -33,21 +40,18 @@ export function getLibrary() {
   pagination.addEventListener('click', switchesLibraryPages);
   
   pagination.innerHTML = '';
-    let page =1 
-    createPageLibr (page)
+  let page = 1;
+  createPageLibr(page);
     const btnWatched = document.querySelector('.js-btn-watched');
     const btnQueue = document.querySelector('.js-btn-queue');
     
     btnWatched.addEventListener('click', onBtnWatchedClick);
     btnQueue.addEventListener('click', onBtnQueueClick);
     
-    let filmWatched = load('watched');
-    let filmQueue = load('queue');
+    // let filmWatched = load('watched');
+    // let filmQueue = load('queue');
     
- 
-
-
-  if (filmWatched.length !== 0) {
+ if (filmWatched.length !== 0) {
     filmWatched.forEach(el => {
       r.push(el);
     });
@@ -70,8 +74,35 @@ export function getLibrary() {
 
   updateLRating(r);
 
-  renderTamplLibrary(r);
+  console.log(allMovies);
+    let a = { page: 1, films: [] }
+
+  allMovies.forEach((el,index,array) => {
+    
+    a.films.push(el)
+
+    if (a.films.length === 6) {
+      b.push(a)
+      a = { page: a.page + 1, films: [] }
+      
+    }
+    if (el===array[array.length - 1]) {
+        b.push(a)
+      }
+
+    
+  })
+
+const c = {...b}
+
+  console.log(b);
+  console.log(c);
+
+
+
+  renderTamplLibrary(c[0].films);
 }
+
 
 function clearMainContainer() {
   refs.wrapperFilms.innerHTML = '';
@@ -126,14 +157,14 @@ export function updateLGenres(data) {
   return data;
 }
 
- let totalPage;
+let totalPage = Math.ceil((filmWatched.length += filmQueue.length) / 6); 
 function createPageLibr(page) {
  
  let liTag = '';
   let activeLi;
   let beforePage = page - 1; // 20 - 1 = 19
   let afterPage = page + 1; // 20 + 1 = 21
-
+console.log(totalPage);
 /* ------------------------- добавляет стрелку влево ------------------------ */
   if (page > 1) {
     //если значение страницы больше 1, добавляем новый li, который является предыдущей кнопкой
@@ -173,23 +204,23 @@ function createPageLibr(page) {
     }
   }
 
-  /* ----- сколько страниц или li показывают до текущего li с левого краю ----- */
-  if (page === totalPage) {
-    //если значение страницы равно общему количеству страниц, вычти -2 из значения предыдущей страницы
-   totalPage;
-  } else if (page === totalPage - 1) {
-    //а если значение страницы равно общему количеству страниц -1, вычти -1 из значения предыдущей страницы
-    beforePage;
-  }
+  // /* ----- сколько страниц или li показывают до текущего li с левого краю ----- */
+  // if (page === totalPage) {
+  //   //если значение страницы равно общему количеству страниц, вычти -2 из значения предыдущей страницы
+  //   afterPage;
+  // } else if (page === totalPage - 1) {
+  //   //а если значение страницы равно общему количеству страниц -1, вычти -1 из значения предыдущей страницы
+  //   afterPage;
+  // }
 
   /* ----------- сколько страниц или li показывают после текущего li с правого краю ---------- */
-  if (page === 1) {
-    //если значение страницы равно 1, добавь +2 к значению после страницы
-   afterPage;
-  }
+  // if (page === 1) {
+  //   //если значение страницы равно 1, добавь +2 к значению после страницы
+  //  beforePage;
+  // }
   // else if (page === 2) {
   //   //а если значение страницы равно 2, добавь +1 к значению после страницы
-  //   afterPage;
+  //   beforePage -= 1;
   // }
 
   /* --------------------------- добалляет нумерацию -------------------------- */
@@ -245,18 +276,19 @@ for (let pageLength = beforePage; pageLength <= afterPage; pageLength++) {
   pagination.innerHTML = liTag;
 }
 
- function switchesLibraryPages(e) {
+function switchesLibraryPages(e) {
   if (e.target.tagName !== 'LI') return;
-   refs.wrapperFilms.innerHTML = '';
-   totalPage = +e.target.dataset.index
-  refs.wrapperFilms.insertAdjacentHTML('beforeend', renderTamplLibrary(r))
-   const data = document.querySelector('.movie-list')
-   console.log(data);
-  // updateLDate(data);
-
-  // updateLGenres(data);
-
-  // updateLRating(data);
-  createPageLibr(+e.target.dataset.index);
-
+  refs.wrapperFilms.innerHTML = '';
+  let page = +e.target.dataset.index;
+  console.log(page);
+  if (allMovies.length > 6) {
+   
+ 
+ }
+   console.log(allMovies);
+ const k = {...b}
+    createPageLibr(page);
+    refs.wrapperFilms.insertAdjacentHTML('beforeend', renderTamplLibrary(k[Number(page)-1].films))
+  
 }
+
