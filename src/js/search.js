@@ -8,12 +8,13 @@ import genresData from './data/genresData.json';
 import { getCard, updateDate, updateGenres, updateRating } from './getCards.js';
 import { onCutDate, onToggleGenresData } from './components/newData';
 
-
-
-import { updateGenres } from './getCards';
+// import { updateGenres } from './getCards';
 const { galleryList, inputQuery, inputForm, errorMsg } = refs;
 
-inputForm.addEventListener('input', onSearchSubmit, debounce(countrySearchInputHandler, 500));
+import { switchesPages } from './pagination';
+const pagination = document.querySelector('.js-pagination');
+
+inputForm.addEventListener('input', onSearchSubmit, debounce(countrySearchInputHandler, 1000));
 
 function countrySearchInputHandler(e) {
   e.preventDefault();
@@ -25,7 +26,6 @@ function countrySearchInputHandler(e) {
   }
 }
 
-
 async function onSearchSubmit(e) {
   e.preventDefault();
   galleryList.innerHTML = '';
@@ -36,21 +36,20 @@ async function onSearchSubmit(e) {
   try {
     pagination.removeEventListener('click', switchesPages);
     pagination.addEventListener('click', switchesInputPages);
-      // pagination.innerHTML = '';
-  let page = 1;
-    createPageInput(page)
+    // pagination.innerHTML = '';
+    let page = 1;
+    createPageInput(page);
     const data = await fetchDataByQuery.getQueryMovie(inputQuery.value);
-    
+
     fetchDataByQuery.query = inputQuery.value;
     if (typeof data.results === 'undefined' || data.results.length < 1) {
-     
       errorMsg.innerHTML =
         'Search result not successful. Enter the correct movie name and try again';
       return;
     }
 
     // onCutDate(data);
-    updateGenres(data)
+    updateGenres(data);
 
     // onToggleGenresData(data, genresData);
     const markup = mainGallery(data);
@@ -60,18 +59,16 @@ async function onSearchSubmit(e) {
   }
 }
 
-
-async  function createPageInput(page) {
- 
- let liTag = '';
+async function createPageInput(page) {
+  let liTag = '';
   let activeLi;
   let beforePage = page - 1; // 20 - 1 = 19
   let afterPage = page + 1; // 20 + 1 = 21
- 
+
   const data = await fetchDataByQuery.getQueryMovie(inputQuery.value);
   let totalPage = data.total_pages;
   console.log(totalPage);
-/* ------------------------- добавляет стрелку влево ------------------------ */
+  /* ------------------------- добавляет стрелку влево ------------------------ */
   if (page > 1) {
     //если значение страницы больше 1, добавляем новый li, который является предыдущей кнопкой
     // liTag += `<li class="pagination-arrow" data-index="${page - 1}"><svg class="icon">
@@ -113,24 +110,23 @@ async  function createPageInput(page) {
   /* ----- сколько страниц или li показывают до текущего li с левого краю ----- */
   if (page === totalPage) {
     //если значение страницы равно общему количеству страниц, вычти -2 из значения предыдущей страницы
-    afterPage+=2;
+    afterPage += 2;
   } else if (page === totalPage - 1) {
     //а если значение страницы равно общему количеству страниц -1, вычти -1 из значения предыдущей страницы
-    afterPage+=1;
+    afterPage += 1;
   }
 
   /* ----------- сколько страниц или li показывают после текущего li с правого краю ---------- */
   if (page === 1) {
     //если значение страницы равно 1, добавь +2 к значению после страницы
-   beforePage;
-  }
-  else if (page === 2) {
+    beforePage;
+  } else if (page === 2) {
     //а если значение страницы равно 2, добавь +1 к значению после страницы
     beforePage -= 1;
   }
 
   /* --------------------------- добалляет нумерацию -------------------------- */
-for (let pageLength = beforePage; pageLength <= afterPage; pageLength++) {
+  for (let pageLength = beforePage; pageLength <= afterPage; pageLength++) {
     if (pageLength > totalPage) {
       continue;
     }
@@ -170,7 +166,7 @@ for (let pageLength = beforePage; pageLength <= afterPage; pageLength++) {
     //                 <use href="./images/icon/arrow-r.svg"></use>
     //             </svg></li>`;
 
-  //   // ---------------------------------
+    //   // ---------------------------------
     liTag += `<li class="pagination-arrow"  data-index="${
       page + 1
     }"><svg class="pag-icon" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -198,4 +194,3 @@ async function switchesInputPages(e) {
 function clearArticlesContainer() {
   galleryList.innerHTML = '';
 }
-
