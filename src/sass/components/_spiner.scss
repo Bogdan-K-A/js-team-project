@@ -1,26 +1,20 @@
 
-// .spiner {
-//   position: absolute;
-//   top: 0;
-//   left: 0;
+.spiner {
+  position: absolute;
+  position: fixed;
+  bottom: 50%;
+// display: none;
 
-//   width: 100%;
-//   height: 100%;
-// }
+ }
 
 .spiner__container {
-     height: 50vh;
-    width: 100vw; 
-    font-family: Helvetica;
-//
-// position: absolute;
-// top: 0;
-// left: 0;
-
-// width: 100%;
-// height: 100%;
-
-
+ // height: 50vh;
+   width: 100vw;
+  font-family: $font-primary;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 19px;
   }
   
   .loader {
@@ -32,6 +26,8 @@
     left: 0;
     right: 0;
     margin: auto;
+
+
   }
   .loader--dot {
     animation-name: loader;

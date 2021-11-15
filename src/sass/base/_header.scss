@@ -1,6 +1,6 @@
 /* фиксированый header с тенью*/
 .header {
-  // position: fixed;
+  // position: relative;
   top: 0;
   z-index: 1;
   width: 100%;
@@ -169,4 +169,8 @@
 // Стили ля display none
 .hide {
   display: none;
+}
+
+.header-nav {
+  position: relative;
 }
