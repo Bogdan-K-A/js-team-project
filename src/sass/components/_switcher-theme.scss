@@ -9,9 +9,13 @@ body.dark-theme {
 }
 
 .toolbar {
+  position: absolute;
   display: flex;
   justify-content: flex-end;
   padding: 4px 0px;
+
+  top: 2%;
+  right: 2%;
 }
 
 .theme-switch {
