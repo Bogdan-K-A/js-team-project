@@ -1,26 +1,22 @@
 
-// .spiner {
-//   position: absolute;
-//   top: 0;
-//   left: 0;
+.spiner {
+  position: absolute;
+  position: fixed;
+  bottom: 50%;
+  // margin-left: 45%;
+//  display: contents;
 
-//   width: 100%;
-//   height: 100%;
-// }
+ }
 
 .spiner__container {
-     height: 50vh;
-    width: 100vw; 
-    font-family: Helvetica;
-//
-// position: absolute;
-// top: 0;
-// left: 0;
-
-// width: 100%;
-// height: 100%;
-
-
+ // height: 50vh;
+   width: 100vw;
+  font-family: $font-primary;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 19px;
+  color: $third-color;
   }
   
   .loader {
@@ -32,6 +28,8 @@
     left: 0;
     right: 0;
     margin: auto;
+
+
   }
   .loader--dot {
     animation-name: loader;
@@ -41,32 +39,32 @@
     height: 20px;
     width: 20px;
     border-radius: 100%;
-    background-color: black;
+    background-color: #ff6b08;
     position: absolute;
     border: 2px solid white;
   }
   .loader--dot:first-child {
-    background-color: rgb(187, 187, 187);
+    background-color: $third-color;
     animation-delay: 0.5s;
   }
   .loader--dot:nth-child(2) {
-    background-color: rgb(128, 128, 128);
+    background-color: $third-color;
     animation-delay: 0.4s;
   }
   .loader--dot:nth-child(3) {
-    background-color: rgb(99, 98, 98);
+    background-color: $third-color;
     animation-delay: 0.3s;
   }
   .loader--dot:nth-child(4) {
-    background-color: rgb(66, 66, 66);
+    background-color: $third-color;
     animation-delay: 0.2s;
   }
   .loader--dot:nth-child(5) {
-    background-color: rgb(22, 22, 22);
+    background-color: $third-color;
     animation-delay: 0.1s;
   }
   .loader--dot:nth-child(6) {
-    background-color: black;
+    background-color: $third-color;
     animation-delay: 0s;
   }
   .loader--text {
@@ -81,7 +79,7 @@
     content: "Loading";
     font-weight: bold;
     animation-name: loading-text;
-    animation-duration: 3s;
+    animation-duration: 1s;
     animation-iteration-count: infinite;
   }
   

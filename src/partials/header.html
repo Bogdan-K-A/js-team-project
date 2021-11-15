@@ -1,4 +1,16 @@
 <header class="header header-shadow">
+  <div class="toolbar">
+    <!-- Разметка переключателя темы -->
+    <div class="theme-switch">
+      <div class="theme-switch__control">
+        <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle"
+          aria-label="Переключить между тёмной и светлой темой" />
+        <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle"> </label>
+        <div aria-hidden="true" class="theme-switch__marker"></div>
+      </div>
+    </div>
+  </div>
+
   <div class="header-nav container">
     <!--Навигация header-->
     <nav class="main-nav">
@@ -16,21 +28,11 @@
         </li>
       </ul>
     </nav>
-    <div class="toolbar">
-      <!-- Разметка переключателя темы -->
-      <div class="theme-switch">
-        <div class="theme-switch__control">
-          <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle"
-            aria-label="Переключить между тёмной и светлой темой" />
-          <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle"> </label>
-          <div aria-hidden="true" class="theme-switch__marker"></div>
-        </div>
-      </div>
-    </div>
+
     <!-- ------------------- -->
     <div class="header-form">
       <form class="header__input">
-        <input type="text" name="input" class="form-input" placeholder="Search movies" />
+        <input type="text" name="input" id="input__id" class="form-input" placeholder="Search movies" />
         <svg class="search__icon" width="12" height="12">
           <use href="./images/icon/icons.svg#icon-search"></use>
         </svg>

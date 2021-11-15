@@ -2,16 +2,29 @@ import refs from './refs';
 import API from './apiService';
 const fetchDataByQuery = new API();
 import mainGallery from '../templates/card-film.hbs';
+const debounce = require('lodash.debounce');
 
 import genresData from './data/genresData.json';
 import { getCard, updateDate, updateGenres, updateRating } from './getCards.js';
 import { onCutDate, onToggleGenresData } from './components/newData';
-// import { updateGenres } from './getCards'
-import { switchesPages } from './pagination'
+
+
+
+import { updateGenres } from './getCards';
 const { galleryList, inputQuery, inputForm, errorMsg } = refs;
 
-const pagination = document.querySelector('.js-pagination');
-inputForm.addEventListener('submit', onSearchSubmit);
+inputForm.addEventListener('input', onSearchSubmit, debounce(countrySearchInputHandler, 500));
+
+function countrySearchInputHandler(e) {
+  e.preventDefault();
+  clearArticlesContainer();
+  if (data.status === 404) {
+    error({
+      text: 'No film has been found. Please enter a more specific query!',
+    });
+  }
+}
+
 
 async function onSearchSubmit(e) {
   e.preventDefault();
@@ -35,8 +48,10 @@ async function onSearchSubmit(e) {
         'Search result not successful. Enter the correct movie name and try again';
       return;
     }
+
     // onCutDate(data);
     updateGenres(data)
+
     // onToggleGenresData(data, genresData);
     const markup = mainGallery(data);
     galleryList.insertAdjacentHTML('beforeend', markup);
@@ -44,6 +59,7 @@ async function onSearchSubmit(e) {
     console.log('fetchDataByQuery error');
   }
 }
+
 
 async  function createPageInput(page) {
  
@@ -178,3 +194,8 @@ async function switchesInputPages(e) {
 
   galleryList.insertAdjacentHTML('beforeend', mainGallery(data));
 }
+
+function clearArticlesContainer() {
+  galleryList.innerHTML = '';
+}
+

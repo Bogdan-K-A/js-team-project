@@ -155,4 +155,3 @@ function clearPage() {
 }
 /* --------------------- слушатель событий на пагинатор --------------------- */
 pagination.addEventListener('click', switchesPages);
-
