@@ -10,16 +10,23 @@ body.dark-theme {
 
 .toolbar {
   position: absolute;
+
   bottom: -50px;
   right: 20px;
+
   display: flex;
   justify-content: flex-end;
   padding: 4px 0px;
+
+
+  top: 2%;
+  right: 2%;
 
   @media screen and (min-width: 768px) {
     bottom: 0;
     right: 70px;
   }
+
 }
 
 .theme-switch {
