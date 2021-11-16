@@ -28,6 +28,10 @@ export async function getCard() {
 
 export function updateDate(data) {
   data.results.map(el => {
+    if (el.release_date === undefined) {
+      return
+    }
+    console.log(el.release_date);
     el.release_date = el.release_date.substring(0, 4);
   });
 
