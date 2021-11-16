@@ -35,13 +35,14 @@
   font-size: 24px;
   letter-spacing: 0.06em;
 
+  border-radius: 10px;
   border: 1px solid #ff6b01;
   background-color: $third-color;
   color: $front-color;
+  opacity: 0.8;
   box-shadow: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   @media screen and (min-width: $w-tablet) {
-    min-width: 150px;
-    border-radius: 5px;
+    min-width: 120px;
   }
 
   &:hover,
@@ -51,7 +52,7 @@
 
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
       box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
+    opacity: 1;
     cursor: pointer;
   }
 }

@@ -50,11 +50,7 @@ async function onSearchSubmit(e) {
         'Search result not successful. Enter the correct movie name and try again';
       return;
     }
-    // if (!data.results.includes(release_date)) {
-    //   return
- 
-    // }
-      // updateDate(data);
+    updateDate(data);
     // onCutDate(data);
     updateGenres(data);
     updateRating(data);
