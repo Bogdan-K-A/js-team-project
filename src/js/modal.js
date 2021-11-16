@@ -8,8 +8,8 @@ import { onCutDate, onToggleGenresData } from './components/newData';
 import modalMarkup from '../templates/modal.hbs';
 import API from './apiService';
 
-import { getLibrary } from './linkMyLibrary'; //*
-import { onBtnWatchedClick, onBtnQueueClick } from './btnWatched-Queue.js';//*
+import { getLibrary, onBtnWatchedClick, onBtnQueueClick } from './linkMyLibrary'; //*
+// import { onBtnWatchedClick, onBtnQueueClick } from './btnWatched-Queue.js';//*
 const libraryPage = document.querySelector('.site-nav__link-library');//*
 
 
