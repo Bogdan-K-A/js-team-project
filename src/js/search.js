@@ -15,8 +15,8 @@ import { switchesPages } from './pagination';
 import { includes } from 'lodash';
 const pagination = document.querySelector('.js-pagination');
 
-inputForm.addEventListener('input', onSearchSubmit, debounce(countrySearchInputHandler, 500));
-inputForm.addEventListener('input', debounce(onSearchSubmit, 1000));
+// inputForm.addEventListener('input', onSearchSubmit, debounce(countrySearchInputHandler, 500));
+inputForm.addEventListener('input', debounce(onSearchSubmit, 500));
 
 function countrySearchInputHandler(e) {
   e.preventDefault();
@@ -30,6 +30,8 @@ function countrySearchInputHandler(e) {
 
 async function onSearchSubmit(e) {
   e.preventDefault();
+  // console.log(inputQuery.value);
+
   galleryList.innerHTML = '';
   errorMsg.innerHTML = '';
   if (inputQuery.value === '') {
@@ -44,7 +46,7 @@ async function onSearchSubmit(e) {
 
     const data = await fetchDataByQuery.getQueryMovie(inputQuery.value);
     // localStorage.setItem('querymovies', JSON.stringify(data));
-    console.log(data);
+    // console.log(data);
     fetchDataByQuery.query = inputQuery.value;
     if (typeof data.results === 'undefined' || data.results.length < 1) {
       errorMsg.innerHTML =
