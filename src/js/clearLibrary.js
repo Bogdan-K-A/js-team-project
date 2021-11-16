@@ -14,6 +14,6 @@ export function clearLib(text) {
   wrapperFilms.insertAdjacentHTML('beforeend', clearLibrary(text));
   setTimeout(() => {
     const backHome = document.querySelector('.clear-library_btn');
-    backHome.addEventListener('click', refreshPage);
+    // backHome.addEventListener('click', refreshPage);
   }, 1000);
 }
