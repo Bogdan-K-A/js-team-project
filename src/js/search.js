@@ -7,14 +7,15 @@ const debounce = require('lodash.debounce');
 import genresData from './data/genresData.json';
 import { getCard, updateDate, updateGenres, updateRating } from './getCards.js';
 import { onCutDate, onToggleGenresData } from './components/newData';
-
+import { createAmountCardOnPage } from './linkMyLibrary';
 // import { updateGenres } from './getCards';
 const { galleryList, inputQuery, inputForm, errorMsg } = refs;
 
 import { switchesPages } from './pagination';
+import { includes } from 'lodash';
 const pagination = document.querySelector('.js-pagination');
 
-inputForm.addEventListener('input', onSearchSubmit, debounce(countrySearchInputHandler, 1000));
+inputForm.addEventListener('input', onSearchSubmit, debounce(countrySearchInputHandler, 1500));
 
 function countrySearchInputHandler(e) {
   e.preventDefault();
@@ -35,23 +36,26 @@ async function onSearchSubmit(e) {
   }
   try {
     pagination.removeEventListener('click', switchesPages);
-    pagination.addEventListener('click', switchesInputPages);
-    // pagination.innerHTML = '';
-    let page = 1;
-    createPageInput(page);
-    const data = await fetchDataByQuery.getQueryMovie(inputQuery.value);
+    // pagination.addEventListener('click', switchesInputPages);
+    pagination.innerHTML = '';
+    // let page = 1;
+    // createPageInput(page);
 
+    const data = await fetchDataByQuery.getQueryMovie(inputQuery.value);
+    // localStorage.setItem('querymovies', JSON.stringify(data));
+    console.log(data);
     fetchDataByQuery.query = inputQuery.value;
     if (typeof data.results === 'undefined' || data.results.length < 1) {
       errorMsg.innerHTML =
         'Search result not successful. Enter the correct movie name and try again';
       return;
     }
-
+    updateDate(data);
     // onCutDate(data);
     updateGenres(data);
-
+    updateRating(data);
     // onToggleGenresData(data, genresData);
+
     const markup = mainGallery(data);
     galleryList.insertAdjacentHTML('beforeend', markup);
   } catch (err) {

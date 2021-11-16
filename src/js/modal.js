@@ -3,14 +3,21 @@ const galleryPosterSetModal = document.querySelector('.wrapper-films');
 const closeBtn = document.querySelector('.modal__button_close');
 const modalBackdrop = document.querySelector('.modal_backdrop');
 const galleryBox = document.querySelector('.modal-markup');
-import { addToLocalStorWatched,addToLocalStorQueue,renderBtnWatch,renderBtnQueue } from './addToLocalStorLibrary.js';
+import {
+  addToLocalStorWatched,
+  addToLocalStorQueue,
+  renderBtnWatch,
+  renderBtnQueue,
+} from './addToLocalStorLibrary.js';
 import { onCutDate, onToggleGenresData } from './components/newData';
 import modalMarkup from '../templates/modal.hbs';
 import API from './apiService';
 
+
 import { getLibrary, onBtnWatchedClick, onBtnQueueClick } from './linkMyLibrary'; //*
 // import { onBtnWatchedClick, onBtnQueueClick } from './btnWatched-Queue.js';//*
 const libraryPage = document.querySelector('.site-nav__link-library');//*
+
 
 
 const fetchData = new API();
@@ -25,8 +32,16 @@ export function open(e) {
     return;
   }
   modalBackdrop.classList.remove('is-hidden');
-  renderModal(cardId)
+  renderModal(cardId);
   closeModal();
+  modalBackdrop.addEventListener(
+    'wheel',
+    e => {
+      console.log('scroll');
+      e.preventDefault();
+    },
+    { passive: false },
+  );
 }
 function closeModal() {
   closeBtn.addEventListener('click', close);
@@ -48,19 +63,16 @@ function close() {
   // Видаляє обєкт з фільмом на LocalStorage
   localStorage.removeItem('currentFilm');
   if (libraryPage.classList.contains('link__current')) {
-    const btnWatched = document.querySelector('.js-btn-watched');//*
-    const btnQueue = document.querySelector('.js-btn-queue');//*
+    const btnWatched = document.querySelector('.js-btn-watched'); //*
+    const btnQueue = document.querySelector('.js-btn-queue'); //*
     if (btnWatched.classList.contains('isActive')) {
-      onBtnWatchedClick()
-    }
-    else if (btnQueue.classList.contains('isActive')) {
-      onBtnQueueClick()
-    }
-    else {
-      getLibrary()
+      onBtnWatchedClick();
+    } else if (btnQueue.classList.contains('isActive')) {
+      onBtnQueueClick();
+    } else {
+      getLibrary();
     }
   }
-  
 }
 
 async function renderModal(cardId) {
@@ -70,17 +82,15 @@ async function renderModal(cardId) {
     onToggleGenresData(data, genresData);
     // console.log(data);
     // Добавляє обєкт з фільмом на LocalStorage
-    localStorage.setItem('currentFilm',JSON.stringify(data))
+    localStorage.setItem('currentFilm', JSON.stringify(data));
     const markup = modalMarkup(data);
     // console.log(markup);
     galleryBox.insertAdjacentHTML('beforeend', markup);
-    renderBtnWatch()
-    renderBtnQueue()
-    addToLocalStorQueue()
-    addToLocalStorWatched()
+    renderBtnWatch();
+    renderBtnQueue();
+    addToLocalStorQueue();
+    addToLocalStorWatched();
   } catch (err) {
     console.log('error');
   }
 }
-
-

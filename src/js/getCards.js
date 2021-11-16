@@ -7,10 +7,9 @@ const service = new ApiService();
 
 export async function getCard() {
   try {
-
     spinerAdd();
     const data = await service.fetchFilms();
-   
+
     const genre = await service.fetchGenre();
 
     updateDate(data);
@@ -28,6 +27,10 @@ export async function getCard() {
 
 export function updateDate(data) {
   data.results.map(el => {
+    if (el.release_date === undefined) {
+      return;
+    }
+    // console.log(el.release_date);
     el.release_date = el.release_date.substring(0, 4);
   });
 
@@ -82,4 +85,3 @@ export function createCardFilm(data) {
 }
 
 getCard();
-

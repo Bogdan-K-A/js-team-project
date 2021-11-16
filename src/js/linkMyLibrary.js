@@ -1,5 +1,6 @@
 import renderTamplLibrary from './library-container.js';
 const refs = { wrapperFilms: document.querySelector('.wrapper-films') };
+
 import { clearLib } from './clearLibrary'; 
 
 const pagination = document.querySelector('.js-pagination');
@@ -16,6 +17,7 @@ const load = key => {
 };
 
 // Сlick on link "My Library"
+
  
 export function getLibrary() {
   clearMainContainer();
@@ -23,17 +25,21 @@ export function getLibrary() {
   // pagination.removeEventListener('click', switchesPages);
   // pagination.addEventListener('click', switchesLibraryPages);
   
+
   const btnWatched = document.querySelector('.js-btn-watched');
   const btnQueue = document.querySelector('.js-btn-queue');
     
   btnWatched.addEventListener('click', onBtnWatchedClick);
   btnQueue.addEventListener('click', onBtnQueueClick);
+
   onBtnWatchedClick();
 }
+
 
 function clearMainContainer() {
   refs.wrapperFilms.innerHTML = '';
 }
+
 
 export function onBtnWatchedClick() {
     clearMainContainer(); 
@@ -42,8 +48,10 @@ export function onBtnWatchedClick() {
     btnWatched.classList.add("isActive");
     btnQueue.classList.remove("isActive");
 
+
     let filmWatched = load('watched');
     
+
     if (filmWatched.length !== 0) {
         updateLDate(filmWatched);
         updateLGenres(filmWatched);
@@ -80,6 +88,7 @@ export function onBtnQueueClick() {
         return clearLib(textLibrary)
     }
     
+
 }
 
 export function updateLDate(data) {
@@ -130,13 +139,4 @@ export function updateLGenres(data) {
 
   return data;
 }
-
-
-
-
-
-
-
-
-
 
