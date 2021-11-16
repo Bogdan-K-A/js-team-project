@@ -15,7 +15,7 @@ import { switchesPages } from './pagination';
 import { includes } from 'lodash';
 const pagination = document.querySelector('.js-pagination');
 
-inputForm.addEventListener('input', onSearchSubmit, debounce(countrySearchInputHandler, 1500));
+inputForm.addEventListener('input', onSearchSubmit, debounce(countrySearchInputHandler, 500));
 inputForm.addEventListener('input', debounce(onSearchSubmit, 1000));
 
 function countrySearchInputHandler(e) {
