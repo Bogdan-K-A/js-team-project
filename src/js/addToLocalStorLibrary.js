@@ -30,7 +30,7 @@ export function addToLocalStorWatched() {
 
     // добавляє фільм
     if (btnWatch.textContent === 'add to Watched') {
-      btnWatch.textContent = 'remowe to Watched';
+      btnWatch.textContent = 'remowe from Watched';
       btnWatch.classList.add('active')
       // забирає обєкт з фільмом який зараз на модальному вікні і розпарсує його
       const films = localStorage.getItem('currentFilm');
@@ -55,7 +55,7 @@ export function addToLocalStorWatched() {
       //=================================================*
 
       // видаляє фільм
-    } else if (btnWatch.textContent === 'remowe to Watched') {
+    } else if (btnWatch.textContent === 'remowe from Watched') {
       btnWatch.textContent = 'add to Watched';
       btnWatch.classList.remove('active')
 
@@ -84,7 +84,7 @@ export function addToLocalStorQueue() {
 
     // добавляє фільм
     if (btnQueue.textContent === 'add to queue') {
-        btnQueue.textContent = 'remowe to queue';
+        btnQueue.textContent = 'remowe from queue';
         btnQueue.classList.add('active')
       // забирає обєкт з фільмом який зараз на модальному вікні і розпарсує його
       const films = localStorage.getItem('currentFilm');
@@ -110,7 +110,7 @@ export function addToLocalStorQueue() {
       //==========================================*
 
       // видаляє фільм
-    } else if (btnQueue.textContent === 'remowe to queue') {
+    } else if (btnQueue.textContent === 'remowe from queue') {
         btnQueue.textContent = 'add to queue';
         btnQueue.classList.remove('active')
 
@@ -142,7 +142,7 @@ export function renderBtnWatch() {
 
   // перевірка кнопки
   if (parseStore.some(e => e.id === addFilms.id)) {
-      btnWatch.textContent = 'remowe to Watched';
+      btnWatch.textContent = 'remowe from Watched';
       btnWatch.classList.add('active')
   }
 }
@@ -161,7 +161,7 @@ export function renderBtnQueue() {
 
   // перевірка кнопки
   if (parseStore.some(e => e.id === addFilms.id)) {
-      btnQueue.textContent = 'remowe to queue';
+      btnQueue.textContent = 'remowe from queue';
       btnQueue.classList.add('active')
   }
 }
