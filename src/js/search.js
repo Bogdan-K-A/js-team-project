@@ -38,27 +38,32 @@ export async function onSearchSubmit(e) {
     pagination.addEventListener('click', switchesInputPages);
 
     pagination.innerHTML = '';
-    let page = 1;
+    const page = 1;
+    fetchDataByQuery.resetPage(page)
     createPageInput(page);
 
     const data = await fetchDataByQuery.getQueryMovie(inputQuery.value);
 
     fetchDataByQuery.query = inputQuery.value;
+    
     if (typeof data.results === 'undefined' || data.results.length < 1) {
       errorMsg.innerHTML =
         'Search result not successful. Enter the correct movie name and try again';
+      setTimeout(()=>{clearInput()},3000)
       getCard();
       return;
+    } else {
+      
+      updateDate(data);
+
+      updateGenres(data);
+
+      updateRating(data);
+
+      const markup = mainGallery(data);
+    console.log(data);
+      galleryList.insertAdjacentHTML('beforeend', markup);
     }
-    updateDate(data);
-
-    updateGenres(data);
-
-    updateRating(data);
-
-    const markup = mainGallery(data);
-
-    galleryList.insertAdjacentHTML('beforeend', markup);
   } catch (err) {
     console.log('fetchDataByQuery error');
   }
@@ -181,4 +186,9 @@ export async function switchesInputPages(e) {
 
 function clearArticlesContainer() {
   galleryList.innerHTML = '';
+}
+
+function clearInput() {
+  errorMsg.innerHTML = '';
+  inputQuery.value=''
 }
