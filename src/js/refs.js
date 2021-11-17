@@ -23,7 +23,6 @@ export default {
   /* ------------------------------- makeMarkupModalTeam ------------------------------- */
   ulContainer: document.querySelector('.js-team-modal__list'),
   /* ------------------------------- modal ------------------------------- */
-  galleryPosterSetModal: document.querySelector('.wrapper-films'),
   closeBtn: document.querySelector('.modal__button_close'),
   modalBackdrop: document.querySelector('.modal_backdrop'),
   galleryBox: document.querySelector('.modal-markup'),
@@ -32,7 +31,6 @@ export default {
   videoContainer: document.querySelector('.modal_youTube-video-container'),
   youTubModal: document.querySelector('.modal_youTube'),
   videoCloseBtn: document.querySelector('.modal_youTube__close-btn'),
-  backdrop: document.querySelector('.modal_backdrop'),
   closeBtn: document.querySelector('.youTube-close-btn'),
   /* ------------------------------- team-modal ------------------------------- */
   btnModal: document.querySelector('.js-team-modal__btn'),

@@ -1,8 +1,14 @@
 import genresData from './data/genresData.json';
-const galleryPosterSetModal = document.querySelector('.wrapper-films');
-const closeBtn = document.querySelector('.modal__button_close');
-const modalBackdrop = document.querySelector('.modal_backdrop');
-const galleryBox = document.querySelector('.modal-markup');
+const refs = {
+  wrapperFilms: document.querySelector('.wrapper-films'),
+  closeBtn: document.querySelector('.modal__button_close'),
+  modalBackdrop: document.querySelector('.modal_backdrop'),
+  galleryBox: document.querySelector('.modal-markup'),
+  libraryPage: document.querySelector('.site-nav__link-library'),
+};
+// import refs from './refs';
+const { wrapperFilms, galleryBox, modalBackdrop, closeBtn, libraryPage } = refs;
+
 import {
   addToLocalStorWatched,
   addToLocalStorQueue,
@@ -14,32 +20,30 @@ import modalMarkup from '../templates/modal.hbs';
 import API from './apiService';
 
 import { getLibrary, onBtnWatchedClick, onBtnQueueClick } from './linkMyLibrary'; //*
-// import { onBtnWatchedClick, onBtnQueueClick } from './btnWatched-Queue.js';//*
-const libraryPage = document.querySelector('.site-nav__link-library'); //*
 
 const fetchData = new API();
 
-galleryPosterSetModal.addEventListener('click', open);
+wrapperFilms.addEventListener('click', open);
 
 export function open(e) {
-  // console.log(e.target);
+  console.log(e.target);
   const cardId = e.target.parentNode.id;
-  // console.log(e.target.parentNode.classList);
-  if (!e.target.parentNode.classList.contains('modal')) {
-    return;
+
+  if (e.target.nodeName === 'IMG' && e.target.className === 'card-film__img') {
+    modalBackdrop.classList.remove('is-hidden');
+    renderModal(cardId);
+    closeModal();
+    modalBackdrop.addEventListener(
+      'wheel',
+      e => {
+        // console.log('scroll');
+        e.preventDefault();
+      },
+      { passive: false },
+    );
   }
-  modalBackdrop.classList.remove('is-hidden');
-  renderModal(cardId);
-  closeModal();
-  modalBackdrop.addEventListener(
-    'wheel',
-    e => {
-      console.log('scroll');
-      e.preventDefault();
-    },
-    { passive: false },
-  );
 }
+
 function closeModal() {
   closeBtn.addEventListener('click', close);
   document.addEventListener('keydown', event => {
@@ -47,6 +51,7 @@ function closeModal() {
       close();
     }
   });
+
   modalBackdrop.addEventListener('click', e => {
     if (e.target.classList.contains('modal_backdrop')) {
       close();
@@ -81,7 +86,9 @@ async function renderModal(cardId) {
     // Добавляє обєкт з фільмом на LocalStorage
     localStorage.setItem('currentFilm', JSON.stringify(data));
     const markup = modalMarkup(data);
+
     // console.log(markup);
+
     galleryBox.insertAdjacentHTML('beforeend', markup);
     renderBtnWatch();
     renderBtnQueue();
