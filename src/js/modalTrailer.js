@@ -15,7 +15,8 @@ const { modal, videoContainer, youTubModal, videoCloseBtn, backdrop, closeBtn } 
 
 modal.addEventListener('click', onModalBtnClick);
 videoCloseBtn.addEventListener('click', clearVideoModal);
-
+backdrop.addEventListener('click', onBackdrop);
+document.addEventListener('keydown', onKeyClose);
 function onModalBtnClick(e) {
   try{ e.preventDefault();
            const id = JSON.parse(e.target.dataset.id);
@@ -42,18 +43,19 @@ function onModalBtnClick(e) {
 function onCloseBtn(e) {
     backdrop.classList.add('is-hidden');
     videoContainer.innerHTML = '';
-    
     videoContainer.classList.remove('watch');
     youTubModal.classList.add('is-hidden');
-    videoCloseBtn.removeEventListener('click', onKeyClose);
-    
-  window.removeEventListener('keyup', onKeyClose);
+    videoCloseBtn.removeEventListener('keydown', onKeyClose);
 }
-
+function onBackdrop(e) {
+  if (e.target.classList.contains('modal_backdrop')) {
+    onCloseBtn();
+  }
+}
 function onKeyClose(e) {
   if (e.code === 'Escape') {
-    videoContainer.innerHTML = '';
     onCloseBtn();
+    clearVideoModal();
     
   }
 }
@@ -61,5 +63,5 @@ function clearVideoModal() {
   videoContainer.innerHTML = '';
   videoContainer.classList.remove('watch');
   youTubModal.classList.add('is-hidden');
-  videoCloseBtn.removeEventListener('click', onKeyClose);
+  videoCloseBtn.removeEventListener('keydown', onKeyClose);
 }
