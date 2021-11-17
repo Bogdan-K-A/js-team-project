@@ -33,8 +33,8 @@ export async function onSearchSubmit(e) {
   errorMsg.innerHTML = '';
   if (inputQuery.value === '') {
     inputForm.removeEventListener('input', debounce(onSearchSubmit, 1000));
-      pagination.removeEventListener('click', switchesInputPages);
-    pagination.innerHTML = ''
+    pagination.removeEventListener('click', switchesInputPages);
+    pagination.innerHTML = '';
     pagination.addEventListener('click', switchesPages);
     createPag(1);
     getCard();
@@ -49,7 +49,6 @@ export async function onSearchSubmit(e) {
     createPageInput(page);
 
     const data = await fetchDataByQuery.getQueryMovie(inputQuery.value);
-  
 
     fetchDataByQuery.query = inputQuery.value;
     if (typeof data.results === 'undefined' || data.results.length < 1) {
@@ -58,7 +57,7 @@ export async function onSearchSubmit(e) {
       return;
     }
     updateDate(data);
-  
+
     updateGenres(data);
 
     updateRating(data);
@@ -66,12 +65,10 @@ export async function onSearchSubmit(e) {
     const markup = mainGallery(data);
 
     galleryList.insertAdjacentHTML('beforeend', markup);
-
   } catch (err) {
     console.log('fetchDataByQuery error');
   }
 }
-
 
 async function createPageInput(page) {
   let liTag = '';
@@ -81,7 +78,7 @@ async function createPageInput(page) {
 
   const data = await fetchDataByQuery.getQueryMovie(inputQuery.value);
   let totalPage = data.total_pages;
-  console.log(totalPage);
+  // console.log(totalPage);
   /* ------------------------- добавляет стрелку влево ------------------------ */
   if (page > 1) {
     //если значение страницы больше 1, добавляем новый li, который является предыдущей кнопкой
@@ -200,20 +197,17 @@ export async function switchesInputPages(e) {
   fetchDataByQuery.page = +e.target.dataset.index;
 
   const data = await fetchDataByQuery.getQueryMovie(inputQuery.value);
-    updateDate(data);
- 
-   updateGenres(data);
-  
-    updateRating(data);
+  updateDate(data);
+
+  updateGenres(data);
+
+  updateRating(data);
 
   createPageInput(+e.target.dataset.index);
 
   galleryList.insertAdjacentHTML('beforeend', mainGallery(data));
-
-  
 }
 
 function clearArticlesContainer() {
   galleryList.innerHTML = '';
 }
-
