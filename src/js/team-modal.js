@@ -1,13 +1,9 @@
-const refsModal = {
-  btnModal: document.querySelector('.js-team-modal__btn'),
-  block: document.querySelector('.js-team-modal'),
-  btnClose: document.querySelector('.team-modal__btn'),
-  backdrop: document.querySelector('.backdrop'),
-};
+import refs from './refs';
+const { btnModal, block, btnClose, backdrop } = refs;
 
-refsModal.btnModal.addEventListener('click', openModal);
-refsModal.btnClose.addEventListener('click', closeModal);
-refsModal.backdrop.addEventListener('click', closeModalClickOnBackdrop);
+btnModal.addEventListener('click', openModal);
+btnClose.addEventListener('click', closeModal);
+backdrop.addEventListener('click', closeModalClickOnBackdrop);
 
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape') {
@@ -16,13 +12,13 @@ document.addEventListener('keydown', event => {
 });
 
 function openModal() {
-  refsModal.block.classList.remove('is-hidden');
-  document.body.style.overflow = "hidden"
+  block.classList.remove('is-hidden');
+  document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
-  refsModal.block.classList.add('is-hidden');
-  document.body.style.overflow = ""
+  block.classList.add('is-hidden');
+  document.body.style.overflow = '';
 }
 
 function closeModalClickOnBackdrop(e) {

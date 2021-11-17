@@ -1,11 +1,7 @@
 import myFilter from '../templates/header-library.hbs';
-
 import { getLibrary } from './linkMyLibrary'; //*
-
-const libraryPage = document.querySelector('.site-nav__link-library');
-const headerHome = document.querySelector('.header');
-const pageHome = document.querySelector('.site-nav__link-home');
-const searchQuery = document.querySelector('.header-form');
+import refs from './refs';
+const { libraryPage, headerHome, pageHome, searchQuery } = refs;
 
 function addLibraryPage(e) {
   e.preventDefault();
