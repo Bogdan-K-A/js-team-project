@@ -148,6 +148,11 @@
   @media screen and (min-width: $w-tablet) {
     width: 336px;
   }
+
+  &:hover,
+  &:focus {
+    border-bottom: 3px solid $third-color;
+  }
 }
 
 .form-input::placeholder {
