@@ -1,6 +1,8 @@
 import genresData from './data/genresData.json';
-import refs from './refs';
-const { galleryPosterSetModal, closeBtn, modalBackdrop, galleryBox, libraryPage } = refs;
+const galleryPosterSetModal = document.querySelector('.wrapper-films');
+const closeBtn = document.querySelector('.modal__button_close');
+const modalBackdrop = document.querySelector('.modal_backdrop');
+const galleryBox = document.querySelector('.modal-markup');
 import {
   addToLocalStorWatched,
   addToLocalStorQueue,
@@ -13,6 +15,7 @@ import API from './apiService';
 
 import { getLibrary, onBtnWatchedClick, onBtnQueueClick } from './linkMyLibrary'; //*
 // import { onBtnWatchedClick, onBtnQueueClick } from './btnWatched-Queue.js';//*
+const libraryPage = document.querySelector('.site-nav__link-library'); //*
 
 const fetchData = new API();
 
