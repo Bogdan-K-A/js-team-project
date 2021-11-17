@@ -45,8 +45,11 @@ export async function onSearchSubmit(e) {
 
     fetchDataByQuery.query = inputQuery.value;
     if (typeof data.results === 'undefined' || data.results.length < 1) {
-      errorMsg.innerHTML =
-        'Search result not successful. Enter the correct movie name and try again';
+      ('Search result not successful. Enter the correct movie name and try again');
+      pagination.removeEventListener('click', switchesInputPages);
+      pagination.innerHTML = '';
+      pagination.addEventListener('click', switchesPages);
+      createPag(1);
       getCard();
       return;
     }
