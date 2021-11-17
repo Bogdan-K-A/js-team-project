@@ -5,4 +5,5 @@ export default {
   inputForm: document.querySelector('.header__input'),
   errorMsg: document.querySelector('.text-error'),
   buttonScrollToUp: document.querySelector('#btn-scroll-up'),
+  pagination: document.querySelector('.js-pagination'),
 };
