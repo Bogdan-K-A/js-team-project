@@ -72,7 +72,7 @@ async function createPageInput(page) {
 
   const data = await fetchDataByQuery.getQueryMovie(inputQuery.value);
   let totalPage = data.total_pages;
-  console.log(totalPage);
+  // console.log(totalPage);
   /* ------------------------- добавляет стрелку влево ------------------------ */
   if (page > 1) {
     //если значение страницы больше 1, добавляем новый li, который является предыдущей кнопкой
