@@ -73,4 +73,4 @@ const e={btnModal:document.querySelector(".js-team-modal__btn"),block:document.q
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/apiService"),require("./js/getCards"),require("./js/header-library"),require("./js/pagination"),require("./js/clearLibrary"),require("./js/modal"),require("./js/search"),require("./js/addToLocalStorLibrary"),require("./js/modalTrailer"),require("./js/components/button-scroll"),require("./js/themes"),require("./js/components/spiner"),require("./js/team-modal");
 },{"./sass/main.scss":"clu1","./js/apiService":"eQwa","./js/getCards":"NpGb","./js/header-library":"XgnG","./js/pagination":"o8lo","./js/clearLibrary":"aqgU","./js/modal":"RSqK","./js/search":"HU2o","./js/addToLocalStorLibrary":"RQWD","./js/modalTrailer":"Wviz","./js/components/button-scroll":"OYgZ","./js/themes":"XcIw","./js/components/spiner":"IsPk","./js/team-modal":"SVxB"}]},{},["Focm"], null)
-//# sourceMappingURL=/js-team-project/src.8a07a409.js.map
+//# sourceMappingURL=/js-team-project/src.b2457460.js.map
