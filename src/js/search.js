@@ -49,12 +49,26 @@ export async function onSearchSubmit(e) {
     if (typeof data.results === 'undefined' || data.results.length < 1) {
       errorMsg.innerHTML =
         'Search result not successful. Enter the correct movie name and try again';
+
       setTimeout(()=>{clearInput()},3000)
       getCard();
       return;
     } else {
       
       updateDate(data);
+
+      pagination.removeEventListener('click', switchesInputPages);
+      pagination.innerHTML = '';
+      pagination.addEventListener('click', switchesPages);
+      createPag(1);
+      getCard();
+      return;
+    }
+
+    updateDate(data);
+
+    updateGenres(data);
+
 
       updateGenres(data);
 
