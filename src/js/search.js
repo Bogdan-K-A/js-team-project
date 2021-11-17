@@ -54,6 +54,7 @@ export async function onSearchSubmit(e) {
     if (typeof data.results === 'undefined' || data.results.length < 1) {
       errorMsg.innerHTML =
         'Search result not successful. Enter the correct movie name and try again';
+      getCard();
       return;
     }
     updateDate(data);
