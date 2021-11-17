@@ -38,13 +38,10 @@ async function onSearchSubmit(e) {
     getCard();
     return;
   }
-
   try {
     // pagination.addEventListener('click', switchesInputPages);
     // pagination.removeEventListener('click', switchesPages);
-
     pagination.innerHTML = '';
-
     // let page = 1;
     // createPageInput(page);
 
