@@ -1,21 +1,40 @@
 <ul class='movie-list'>
-  {{#each results}}
+  {{!-- {{#each results}}
   <li class='card-film'>
     <div class='card-film__box-img modal' id={{id}} data-img={{poster_path}}>
       <img src='https://image.tmdb.org/t/p/w500{{poster_path}}' alt='' class='card-film__img' />
-    </div>
-    <div class='card-film__description'>
-      <h2 class='card-film__title'>{{title}}</h2>
-      <div class='card-film__inf'>
-        {{#if genre_ids}}
-        <p class='card-film__genre'>{{genre_ids}}</p>
+    </div> --}}
+  {{! ------------------------------------------- }}
+  {{#each results}}
+    <li class='card-film'>
+      <div class='card-film__box-img modal' id={{id}} data-img={{poster_path}}>
+        {{#if poster_path}}
+          <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt='' class='card-film__img' />
+        {{else}}
+          <img src='#' alt='' class='card-film__img' />
         {{/if}}
-        {{#if release_date}}
-        <span class='year'>{{release_date}}</span>
-        {{/if}}
-        <span class='rating'>{{vote_average}}</span>
       </div>
-    </div>
-  </li>
+      {{! ------------------------------------------- }}
+      <div class='card-film__description'>
+        <h2 class='card-film__title'>
+          {{title}}
+        </h2>
+        <div class='card-film__inf'>
+          {{#if genre_ids}}
+            <p class='card-film__genre'>
+              {{genre_ids}}
+            </p>
+          {{/if}}
+          {{#if release_date}}
+            <span class='year'>
+              {{release_date}}
+            </span>
+          {{/if}}
+          <span class='rating'>
+            {{vote_average}}
+          </span>
+        </div>
+      </div>
+    </li>
   {{/each}}
 </ul>

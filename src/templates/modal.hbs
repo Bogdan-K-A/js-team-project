@@ -1,10 +1,19 @@
 
 <div class="modal-poster-container">
     {{!-- <h2 class="movie_modal__title" data-id={{id}}>Trailer</h2> --}}
-<img class="movie_modal_img" src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt={{title}} data-id={{id}}>
+{{!-- <img class="movie_modal_img" src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt={{title}} data-id={{id}}>
 <button type="button" class="movie_modal__btn-youtube youtubeBtn-js" data-trailer="youtube" data-id={{id}}>
     <svg class="modal_play-icon" width="100" height="100"></svg>
-</button>
+</button> --}}
+{{!-- ------------------------------- --}}
+   {{#if poster_path}}
+<img class="movie_modal_img" src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt={{title}} data-id={{id}}>
+{{else}}
+<img class="movie_modal_img" src="#" alt={{title}} data-id={{id}}>
+{{/if}}
+<button type="button" class="movie_modal__btn-youtube youtubeBtn-js" data-trailer="youtube" data-id={{id}}>
+{{!-- ------------------------------- --}}
+
 </div>
 <div class="modal_movie_description">
 
