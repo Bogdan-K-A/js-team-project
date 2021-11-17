@@ -27,5 +27,18 @@ export default {
   closeBtn: document.querySelector('.modal__button_close'),
   modalBackdrop: document.querySelector('.modal_backdrop'),
   galleryBox: document.querySelector('.modal-markup'),
+  /* ------------------------------- modalTrailer ------------------------------- */
+  modal: document.querySelector('.modal_window'),
+  videoContainer: document.querySelector('.modal_youTube-video-container'),
+  youTubModal: document.querySelector('.modal_youTube'),
+  videoCloseBtn: document.querySelector('.modal_youTube__close-btn'),
+  backdrop: document.querySelector('.modal_backdrop'),
+  closeBtn: document.querySelector('.youTube-close-btn'),
   /* ------------------------------- team-modal ------------------------------- */
+  btnModal: document.querySelector('.js-team-modal__btn'),
+  block: document.querySelector('.js-team-modal'),
+  btnClose: document.querySelector('.team-modal__btn'),
+  backdrop: document.querySelector('.backdrop'),
+  /* --------------------------------- themes --------------------------------- */
+  changeThemeBtn: document.querySelector('#theme-switch-toggle'),
 };

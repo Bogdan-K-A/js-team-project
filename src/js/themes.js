@@ -1,11 +1,13 @@
+import refs from './refs';
+const { changeThemeBtn } = refs;
+
 const Theme = {
   LIGHT: 'light-theme',
   DARK: 'dark-theme',
 };
 
-console.log(JSON.stringify(Theme));
+// console.log(JSON.stringify(Theme));
 
-const changeThemeBtn = document.querySelector('#theme-switch-toggle');
 const light = Theme.LIGHT;
 const dark = Theme.DARK;
 
@@ -21,6 +23,7 @@ function onChangeTheme(event) {
     toggleTheme(light, dark);
     localStorage.setItem('theme', light);
   }
+
   if (event.target.checked) {
     toggleTheme(dark, light);
     localStorage.setItem('theme', dark);
@@ -36,6 +39,7 @@ function cacheChange() {
   if (currentTheme === null) {
     return;
   }
+
   if (currentTheme === light) {
     document.body.classList.add(light);
     changeThemeBtn.checked = false;

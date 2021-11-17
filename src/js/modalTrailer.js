@@ -2,15 +2,7 @@ import ApiService from './apiService';
 import renderTrailer from '../templates/trailer.hbs';
 import { open } from './modal';
 const newsApiService = new ApiService();
-
-const refs = {
-  modal: document.querySelector('.modal_window'),
-  videoContainer: document.querySelector('.modal_youTube-video-container'),
-  youTubModal: document.querySelector('.modal_youTube'),
-  videoCloseBtn: document.querySelector('.modal_youTube__close-btn'),
-  backdrop: document.querySelector('.modal_backdrop'),
-  closeBtn: document.querySelector('.youTube-close-btn'),
-};
+import refs from './refs';
 const { modal, videoContainer, youTubModal, videoCloseBtn, backdrop, closeBtn } = refs;
 
 modal.addEventListener('click', onModalBtnClick);
@@ -41,6 +33,7 @@ function onModalBtnClick(e) {
     open(e);
   }
 }
+
 function onCloseBtn(e) {
   backdrop.classList.add('is-hidden');
   videoContainer.innerHTML = '';
@@ -58,6 +51,7 @@ function onKeyClose(e) {
     onCloseBtn();
   }
 }
+
 function clearVideoModal() {
   videoContainer.innerHTML = '';
   videoContainer.classList.remove('watch');
