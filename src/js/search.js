@@ -40,7 +40,7 @@ async function onSearchSubmit(e) {
   }
 
   try {
-    // pagination.addEventListener('click', switchesPages);
+    // pagination.addEventListener('click', switchesInputPages);
     // pagination.removeEventListener('click', switchesPages);
 
     pagination.innerHTML = '';
