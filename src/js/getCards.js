@@ -1,8 +1,8 @@
 import ApiService from './apiService';
 import card from '../templates/card-film.hbs';
 import { spinerDel, spinerAdd } from './components/spiner';
-const refs = { wrapperFilms: document.querySelector('.wrapper-films') };
-
+import refs from './refs';
+const { wrapperFilms } = refs;
 const service = new ApiService();
 
 export async function getCard() {
@@ -18,7 +18,7 @@ export async function getCard() {
 
     updateRating(data);
 
-    refs.wrapperFilms.insertAdjacentHTML('afterbegin', createCardFilm(data));
+    wrapperFilms.insertAdjacentHTML('afterbegin', createCardFilm(data));
     spinerDel();
   } catch (error) {
     console.log(error);

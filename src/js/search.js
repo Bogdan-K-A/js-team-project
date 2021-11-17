@@ -2,18 +2,11 @@ import refs from './refs';
 import API from './apiService';
 const fetchDataByQuery = new API();
 import mainGallery from '../templates/card-film.hbs';
-
-import { includes } from 'lodash';
-const debounce = require('lodash.debounce');
-
-// import genresData from './data/genresData.json';
 import { getCard, updateDate, updateGenres, updateRating } from './getCards.js';
-// import { onCutDate, onToggleGenresData } from './components/newData';
 import { switchesPages, createPag } from './pagination';
-
+const debounce = require('lodash.debounce');
 const { galleryList, inputQuery, inputForm, errorMsg, pagination } = refs;
 
-// inputForm.addEventListener('input', onSearchSubmit, debounce(countrySearchInputHandler, 500));
 inputForm.addEventListener('input', debounce(onSearchSubmit, 1000));
 
 function countrySearchInputHandler(e) {
@@ -33,8 +26,8 @@ export async function onSearchSubmit(e) {
   errorMsg.innerHTML = '';
   if (inputQuery.value === '') {
     inputForm.removeEventListener('input', debounce(onSearchSubmit, 1000));
-      pagination.removeEventListener('click', switchesInputPages);
-    pagination.innerHTML = ''
+    pagination.removeEventListener('click', switchesInputPages);
+    pagination.innerHTML = '';
     pagination.addEventListener('click', switchesPages);
     createPag(1);
     getCard();
@@ -49,16 +42,16 @@ export async function onSearchSubmit(e) {
     createPageInput(page);
 
     const data = await fetchDataByQuery.getQueryMovie(inputQuery.value);
-  
 
     fetchDataByQuery.query = inputQuery.value;
     if (typeof data.results === 'undefined' || data.results.length < 1) {
       errorMsg.innerHTML =
         'Search result not successful. Enter the correct movie name and try again';
+      getCard();
       return;
     }
     updateDate(data);
-  
+
     updateGenres(data);
 
     updateRating(data);
@@ -66,12 +59,10 @@ export async function onSearchSubmit(e) {
     const markup = mainGallery(data);
 
     galleryList.insertAdjacentHTML('beforeend', markup);
-
   } catch (err) {
     console.log('fetchDataByQuery error');
   }
 }
-
 
 async function createPageInput(page) {
   let liTag = '';
@@ -85,26 +76,13 @@ async function createPageInput(page) {
   /* ------------------------- добавляет стрелку влево ------------------------ */
   if (page > 1) {
     //если значение страницы больше 1, добавляем новый li, который является предыдущей кнопкой
-    // liTag += `<li class="pagination-arrow" data-index="${page - 1}"><svg class="icon">
-    //                 <use href="./images/icon/icons.svg#icon-arrow-left"></use>
-    //             </svg></li>`;
-
-    // ----------------------------------------
     liTag += `<li class="pagination-arrow" data-index="${
       page - 1
     }"><svg class="pag-icon" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path
-        d="M12.6666 8H3.33325"
-
-      />
-    <path
-        d="M7.99992 12.6667L3.33325 8.00004L7.99992 3.33337"
-
-      />
+    <path d="M12.6666 8H3.33325"/>
+    <path d="M7.99992 12.6667L3.33325 8.00004L7.99992 3.33337"/>
     </svg></li>`;
-    // ----------------------------------------
   }
-
   /* ---------------------- добавляет ... вначале после 1 --------------------- */
   if (page > 2) {
     //если значение страницы больше 2, добавляем новый тег li с значением 1
@@ -120,7 +98,6 @@ async function createPageInput(page) {
       afterPage += 1;
     }
   }
-
   /* ----- сколько страниц или li показывают до текущего li с левого краю ----- */
   if (page === totalPage) {
     //если значение страницы равно общему количеству страниц, вычти -2 из значения предыдущей страницы
@@ -129,7 +106,6 @@ async function createPageInput(page) {
     //а если значение страницы равно общему количеству страниц -1, вычти -1 из значения предыдущей страницы
     afterPage += 1;
   }
-
   /* ----------- сколько страниц или li показывают после текущего li с правого краю ---------- */
   if (page === 1) {
     //если значение страницы равно 1, добавь +2 к значению после страницы
@@ -138,7 +114,6 @@ async function createPageInput(page) {
     //а если значение страницы равно 2, добавь +1 к значению после страницы
     beforePage -= 1;
   }
-
   /* --------------------------- добалляет нумерацию -------------------------- */
   for (let pageLength = beforePage; pageLength <= afterPage; pageLength++) {
     if (pageLength > totalPage) {
@@ -148,7 +123,6 @@ async function createPageInput(page) {
       //если pageLangs равно 0, добавляем +1 к значению pageLangth
       pageLength += 1;
     }
-
     /* ----------------------- указывает активную страницу ---------------------- */
     if (page === pageLength) {
       //если значение страницы равно pageLength, тогда назначаем активную строку из переменной activeLy
@@ -176,18 +150,12 @@ async function createPageInput(page) {
   /* ------------------------ добавляет стрелку вправо ------------------------ */
   if (page < totalPage) {
     //если значение страницы меньше общего значения страницы тогда, добавьте новый li, который является следующей кнопкой
-    // liTag += `<li class="pagination-arrow"  data-index="${page + 1}" ><svg class="icon">
-    //                 <use href="./images/icon/arrow-r.svg"></use>
-    //             </svg></li>`;
-
-    //   // ---------------------------------
     liTag += `<li class="pagination-arrow"  data-index="${
       page + 1
     }"><svg class="pag-icon" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M3.33341 8H12.6667"/>
     <path d="M8.00008 12.6667L12.6667 8.00004L8.00008 3.33337" />
     </svg></li>`;
-    // ---------------------------------
   }
   pagination.innerHTML = liTag;
 }
@@ -200,20 +168,17 @@ export async function switchesInputPages(e) {
   fetchDataByQuery.page = +e.target.dataset.index;
 
   const data = await fetchDataByQuery.getQueryMovie(inputQuery.value);
-    updateDate(data);
- 
-   updateGenres(data);
-  
-    updateRating(data);
+  updateDate(data);
+
+  updateGenres(data);
+
+  updateRating(data);
 
   createPageInput(+e.target.dataset.index);
 
   galleryList.insertAdjacentHTML('beforeend', mainGallery(data));
-
-  
 }
 
 function clearArticlesContainer() {
   galleryList.innerHTML = '';
 }
-

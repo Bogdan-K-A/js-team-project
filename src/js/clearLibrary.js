@@ -1,7 +1,6 @@
 import clearLibrary from '../templates/clear-library.hbs';
-const wrapperFilms = document.querySelector('.wrapper-films'); //*
-const btnWatched = document.querySelector('.js-btn-watched'); //*
-const btnQueue = document.querySelector('.js-btn-queue'); //*
+import refs from './refs.js';
+const { wrapperFilms, btnWatched, btnQueue } = refs;
 
 function refreshPage() {
   btnWatched.removeEventListener('click', onBtnWatchedClick); //*
