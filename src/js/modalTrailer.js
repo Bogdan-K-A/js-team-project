@@ -3,19 +3,12 @@ import renderTrailer from '../templates/trailer.hbs';
 import { open } from './modal';
 const newsApiService = new ApiService();
 
-const refs = {
-  modal: document.querySelector('.modal_window'),
-  videoContainer: document.querySelector('.modal_youTube-video-container'),
-  youTubModal: document.querySelector('.modal_youTube'),
-  videoCloseBtn: document.querySelector('.modal_youTube__close-btn'),
-  backdrop: document.querySelector('.modal_backdrop'),
-  closeBtn: document.querySelector('.youTube-close-btn'),
-};
-const { modal, videoContainer, youTubModal, videoCloseBtn, backdrop, closeBtn } = refs;
+import refs from './refs';
+const { modal, videoContainer, youTubModal, videoCloseBtn, modalBackdrop, closeBtn } = refs;
 
 modal.addEventListener('click', onModalBtnClick);
 videoCloseBtn.addEventListener('click', clearVideoModal);
-backdrop.addEventListener('click', onBackdrop);
+modalBackdrop.addEventListener('click', onBackdrop);
 document.addEventListener('keydown', onKeyClose);
 function onModalBtnClick(e) {
   try {
@@ -43,7 +36,7 @@ function onModalBtnClick(e) {
   }
 }
 function onCloseBtn(e) {
-  backdrop.classList.add('is-hidden');
+  modalBackdrop.classList.add('is-hidden');
   videoContainer.innerHTML = '';
   videoContainer.classList.remove('watch');
   youTubModal.classList.add('is-hidden');
