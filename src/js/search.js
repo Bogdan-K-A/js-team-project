@@ -30,7 +30,6 @@ function countrySearchInputHandler(e) {
 
 async function onSearchSubmit(e) {
   e.preventDefault();
-  // console.log(inputQuery.value);
 
   galleryList.innerHTML = '';
   errorMsg.innerHTML = '';
@@ -56,10 +55,12 @@ async function onSearchSubmit(e) {
     updateDate(data);
     // onCutDate(data);
     updateGenres(data);
+
     updateRating(data);
     // onToggleGenresData(data, genresData);
 
     const markup = mainGallery(data);
+
     galleryList.insertAdjacentHTML('beforeend', markup);
   } catch (err) {
     console.log('fetchDataByQuery error');
