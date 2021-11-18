@@ -5,8 +5,7 @@
     display: flex;
   }
 }
-.scroll
-{
+.scroll {
   display: flex;
 }
 .modal_backdrop {
@@ -54,6 +53,8 @@
 }
 .movie_modal_img {
   @media screen and (min-width: 320px) and (max-width: 767px) {
+    background-image: url(../images/cinema.jpg);
+    background-position: center;
     max-width: 240px;
     max-height: 356px;
     border-radius: 5px;

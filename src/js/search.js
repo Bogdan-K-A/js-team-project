@@ -72,7 +72,7 @@ export async function onSearchSubmit(e) {
     updateRating(data);
 
     const markup = mainGallery(data);
-    console.log(data);
+    
     galleryList.insertAdjacentHTML('beforeend', markup);
   } catch (err) {
     console.log('fetchDataByQuery error');

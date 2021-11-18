@@ -26,7 +26,7 @@ const fetchData = new API();
 wrapperFilms.addEventListener('click', open);
 
 export function open(e) {
-  console.log(e.target);
+  
   const cardId = e.target.parentNode.id;
 
   if (e.target.nodeName === 'IMG' && e.target.className === 'card-film__img') {
