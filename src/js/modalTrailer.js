@@ -22,13 +22,20 @@ function onModalBtnClick(e) {
         .then(el => {
           return el.results.find(el => {
             const videoName = el.name.split(' ');
-            return videoName.some(el => el === 'Trailer');
+            
+              return videoName.some(el => el === 'Trailer');
+            
           });
         })
         .then(el => {
-          videoContainer.insertAdjacentHTML('beforeend', renderTrailer(el));
-          videoContainer.classList.add('watch');
-          youTubModal.classList.remove('is-hidden');
+          if (el) {
+            videoContainer.insertAdjacentHTML('beforeend', renderTrailer(el));
+            videoContainer.classList.add('watch');
+            youTubModal.classList.remove('is-hidden');
+          } else {
+            const btnTV = document.querySelector('.movie_modal__btn-youtube')
+            btnTV.innerHTML = 'NO TRAILER'
+          }
         });
     }
   } catch {
