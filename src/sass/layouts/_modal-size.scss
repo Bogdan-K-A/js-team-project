@@ -53,8 +53,6 @@
 }
 .movie_modal_img {
   @media screen and (min-width: 320px) and (max-width: 767px) {
-    background-image: url(../images/cinema.jpg);
-    background-position: center;
     max-width: 240px;
     max-height: 356px;
     border-radius: 5px;
@@ -99,4 +97,23 @@
 .modal-table {
   width: auto;
   height: auto;
+}
+.non-img {
+  background-image: url(../images/cinema.jpg);
+  background-position: center;
+  // width: 200px;
+  // height: 300px;
+
+  @media screen and (max-width: 767px) {
+    width: 238px;
+    height: 356px;
+  }
+  @media screen and (min-width: $w-tablet) and (max-width: 1023px) {
+    width: 250px;
+    height: 374px;
+  }
+  @media screen and (min-width: $w-desctop) {
+    height: 480px;
+    width: 320px;
+  }
 }
