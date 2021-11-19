@@ -64,7 +64,7 @@ table td {
 }
 .modal_movie_description {
   width: auto;
-
+  color: $primary-color;
   @media screen and (min-width: $w-tablet) {
     margin-left: 30px;
     width: auto;
