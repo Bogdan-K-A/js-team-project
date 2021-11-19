@@ -58,4 +58,4 @@ var t=arguments[3],e="Expected a function",n=NaN,r="[object Symbol]",i=/^\s+|\s+
 },{"./refs":"VyiV"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/apiService"),require("./js/getCards"),require("./js/header-library"),require("./js/pagination"),require("./js/clearLibrary"),require("./js/modal"),require("./js/search"),require("./js/addToLocalStorLibrary"),require("./js/modalTrailer"),require("./js/components/button-scroll"),require("./js/themes"),require("./js/components/spiner"),require("./js/team-modal");
 },{"./sass/main.scss":"clu1","./js/apiService":"eQwa","./js/getCards":"NpGb","./js/header-library":"XgnG","./js/pagination":"o8lo","./js/clearLibrary":"aqgU","./js/modal":"RSqK","./js/search":"HU2o","./js/addToLocalStorLibrary":"RQWD","./js/modalTrailer":"Wviz","./js/components/button-scroll":"OYgZ","./js/themes":"XcIw","./js/components/spiner":"IsPk","./js/team-modal":"SVxB"}]},{},["Focm"], null)
-//# sourceMappingURL=/js-team-project/src.59f0e3da.js.map
+//# sourceMappingURL=/js-team-project/src.809c08e5.js.map
