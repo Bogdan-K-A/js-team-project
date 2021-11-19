@@ -6,12 +6,12 @@
     </div> --}}
   {{! ------------------------------------------- }}
   {{#each results}}
-    <li class='card-film'>
+    <li class='card-film card-film_scale'>
       <div class='card-film__box-img modal' id={{id}} data-img={{poster_path}}>
         {{#if poster_path}}
           <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt='' class='card-film__img' />
         {{else}}
-          <img  alt='' class='card-film__img' />
+          <img alt='' class='card-film__img' />
         {{/if}}
       </div>
       {{! ------------------------------------------- }}
